@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import '../App.css'
 
 export default class SignUp extends Component {
@@ -7,11 +7,27 @@ export default class SignUp extends Component {
         super(props);
         this.state = {
             name: '',
+            lastname: '',
+            dni: '',
+            age: '',
+            phone: '',
+            address: '',
+            city_id: '',
             email: '',
-            password: ''
+            password: '',
+            cities: []
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentWillMount() {
+        fetch('http://localhost:3001/cities', {
+                method: "GET"
+            })
+            .then(response => response.json())
+            .then(data => this.setState({ cities: data }))
+            .catch(error => alert(error));
     }
 
     handleInputChange(event) {
@@ -24,8 +40,8 @@ export default class SignUp extends Component {
     }
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.email + ' - ' + this.state.password + ' - ' + this.state.name);
         event.preventDefault();
+        this.props.history.push('/');
     }
 
     render() {
@@ -34,10 +50,20 @@ export default class SignUp extends Component {
               <div className="container"> 
                 <h3 className="w3ls-title w3ls-title1">Create your account</h3>  
                 <div className="login-body">
-                  <form action="#" method="post">
-                    <input type="text" className="user" name="name" placeholder="Enter your Name" required />
-                    <input type="text" className="user" name="email" placeholder="Enter your email" required />
-                    <input type="password" name="password" className="lock" placeholder="Password" required />
+                  <form onSubmit={this.handleSubmit}>
+                    <input type="text" className="user" name="name" placeholder="Enter your Name" value={this.state.name} onChange={this.handleInputChange} required />
+                    <input type="text" className="user" name="lastname" placeholder="Enter your Lastname" value={this.state.lastname} onChange={this.handleInputChange} required />
+                    <input type="text" className="user" name="dni" placeholder="Enter your DNI" value={this.state.dni} onChange={this.handleInputChange} required />
+                    <input type="text" className="user" name="age" placeholder="Enter your Age" value={this.state.age} onChange={this.handleInputChange} required />
+                    <input type="text" className="user" name="phone" placeholder="Enter your Phone" value={this.state.phone} onChange={this.handleInputChange} required />
+                    <input type="text" className="user" name="address" placeholder="Enter your Address" value={this.state.address} onChange={this.handleInputChange} required />
+                    <select className="selectpicker form-control" name="city_id" value={this.state.city_id} onChange={this.handleInputChange}>
+                        <option value="-1">Select your city</option>
+                        {this.state.cities.map((city, index) => <option key={index} value={city.id}>{city.name}</option>)}
+                    </select>
+                    <hr/>
+                    <input type="text" className="user" name="email" placeholder="Enter your email" value={this.state.email} onChange={this.handleInputChange} required />
+                    <input type="password" name="password" className="lock" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} required />
                     <input type="submit" defaultValue="Sign Up " />
                     <div className="forgot-grid">
                       <div className="forgot">
