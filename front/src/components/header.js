@@ -5,13 +5,10 @@ import ApiHelper from './ApiHelper';
 
 export default class Header extends Component {
     constructor(props){
-        this.logout = this.logout()
+        super(props);
     }
     state = {
         categories : []
-    }
-    logout(){
-
     }
     componentDidMount(){
         fetch('http://localhost:3001/categories').then(
@@ -20,8 +17,8 @@ export default class Header extends Component {
             data => {
                 this.setState({
                     categories : data
-                }) 
-                alert(data)
+                })
+                console.log(data)
             }
         ).catch(error => {
             console.log(error);
@@ -69,7 +66,7 @@ export default class Header extends Component {
                                 <li><NavLink to="/login">Login</NavLink></li>
                                 <li><NavLink to="/signup">Sign Up</NavLink></li>
                                 <li><NavLink to="/login">My Orders</NavLink></li>  
-                                <li><a onClick = {this.logout}>Logout</a></li> 
+                                <li><a>Logout</a></li> 
                             </ul> 
                             </li> 
                         </ul>
