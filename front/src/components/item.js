@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 //import '../App.css'
+import ApiHelper from './ApiHelper';
 
 export default class Item extends Component{
+    api = new ApiHelper();
     constructor(props){
         super(props);
 

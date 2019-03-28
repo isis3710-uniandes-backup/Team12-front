@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
 import { NavLink } from "react-router-dom";
 import '../App.css'
+import ApiHelper from './ApiHelper';
 
 export default class Header extends Component {
+    constructor(props){
+        this.logout = this.logout()
+    }
     state = {
         categories : []
     }
-    
+    logout(){
+
+    }
     componentDidMount(){
         fetch('http://localhost:3001/categories').then(
             response => response.json()
@@ -24,13 +30,14 @@ export default class Header extends Component {
     renderCategory(id){
         var cat = this.state.categories.find(obj => {
             return obj.id === id
-          });
+        });
         var arr = cat.subcategories;
         var lista = (typeof (arr) != undefined && (Array.isArray(arr) && arr.length) )?(
             <li className = "has-children">
                 <ul className = "cd-secondary-dropdown is-hidden">
                     <li className="go-back"><a href="#">Menu</a></li>
                     <li className="see-all"><a href="products.html">{`All ${cat.name}`}</a></li>
+                    
                     {cat.subcategories.map(subcat => (
                         <li key = {subcat.id}>{subcat.name}</li>
                     ))}
@@ -62,7 +69,7 @@ export default class Header extends Component {
                                 <li><NavLink to="/login">Login</NavLink></li>
                                 <li><NavLink to="/signup">Sign Up</NavLink></li>
                                 <li><NavLink to="/login">My Orders</NavLink></li>  
-                                <li><NavLink to="/login">Logout</NavLink></li> 
+                                <li><a onClick = {this.logout}>Logout</a></li> 
                             </ul> 
                             </li> 
                         </ul>
