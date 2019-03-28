@@ -28,7 +28,7 @@ export default class Item extends Component{
     render(){
         return(
             <div className ="item-detail">
-            {/**Falta meter algo que sirva para guardar fotos */}
+            
                 <div className = "title">
                     <h1>{this.props.data.name}</h1>
                 </div>

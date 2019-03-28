@@ -17,9 +17,9 @@ export default class Category extends Component{
         //Map de los objetos en list, cada uno es una fila
         return(
             <tr>
-                <td>{/*Info del dueño */}</td>
-                <td>{/*Nombre */}</td>
-                <td>{/*Disponibilidad */}</td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         );
     }
@@ -32,9 +32,9 @@ export default class Category extends Component{
         //Map de los objetos en list, cada uno es un grupo de elementos
         return(
             <tr>
-                <td>{/*Info del dueño */}</td>
-                <td>{/*Nombre */}</td>
-                <td>{/*Disponibilidad */}</td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         );
     }
