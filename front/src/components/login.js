@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { NavLink, withRouter } from "react-router-dom";
 import '../App.css'
+import ApiHelper from './ApiHelper';
 
 export default class Login extends Component {
+    const api = new ApiHelper();
+
     constructor(props) {
         super(props);
         this.state = {
@@ -24,10 +27,23 @@ export default class Login extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        this.Auth.login(this.state.email, this.state.password)
+            .then(res => {
+                if (res) {
+                    return alert("Sorry those credentials don't exist!");
+                }
+                this.props.history.push("/");
+            })
+            .catch(error => {
+                alert('Email or password were incorrect');
+                this.setState({
+                    password: ''
+                });
+            });
         fetch('http://localhost:3001/login', {
                 method: "POST",
                 headers: {
-                    'Content-Type':'application/json'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     'email': this.state.email,
