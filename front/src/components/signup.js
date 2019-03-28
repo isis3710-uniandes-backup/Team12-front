@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter } from "react-router-dom";
-import '../App.css'
+import { NavLink, withRouter, Redirect } from "react-router-dom";
+import '../App.css';
+import ApiHelper from './ApiHelper';
 
 export default class SignUp extends Component {
+
+    api = new ApiHelper();
+
     constructor(props) {
         super(props);
         this.state = {
@@ -41,10 +45,36 @@ export default class SignUp extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.history.push('/');
+        this.api.signup({
+            "name": this.state.name,
+            "lastname": this.state.lastname,
+            "dni": this.state.dni,
+            "age": this.state.age,
+            "phone": this.state.phone,
+            "address": this.state.address,
+            "city_id": this.state.city_id,
+            "email": this.state.email,
+            "password": this.state.password
+        })
+            .then(res => {
+                if (!res) {
+                    return alert("Sorry, unable to create user");
+                }
+                localStorage.setItem("user", res.data);
+                this.props.history.push("/");
+            })
+            .catch(error => {
+                alert('Email or password were incorrect');
+                this.setState({
+                    password: ''
+                });
+            });
     }
 
     render() {
+        if (this.api.loggedIn()) {
+            return (<Redirect to="/"/>);
+        }
         return (
             <div className="login-page">
               <div className="container"> 

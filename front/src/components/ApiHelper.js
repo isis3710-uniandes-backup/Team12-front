@@ -4,12 +4,23 @@ export default class ApiHelper {
 
   login = (email, password) => {
     // Get a token from api server using the fetch api
-    return this.fetch(`/login`, {
+    return this.fetch(`http://localhost:3001/login`, {
       method: "POST",
       body: JSON.stringify({
         email,
         password
       })
+    }).then(res => {
+      this.setToken(res.token); // Setting the token in localStorage
+      return Promise.resolve(res);
+    });
+  };
+
+  signup = (user) => {
+    // Get a token from api server using the fetch api
+    return this.fetch(`http://localhost:3001/signup`, {
+      method: "POST",
+      body: JSON.stringify(user)
     }).then(res => {
       this.setToken(res.token); // Setting the token in localStorage
       return Promise.resolve(res);
@@ -48,6 +59,7 @@ export default class ApiHelper {
   logout = () => {
     // Clear user token and profile data from localStorage
     localStorage.removeItem("id_token");
+    localStorage.removeItem("user");
   };
 
   getConfirm = () => {
