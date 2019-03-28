@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, withRouter, Redirect } from "react-router-dom";
 import '../App.css'
 import ApiHelper from './ApiHelper';
 
@@ -30,9 +30,10 @@ export default class Login extends Component {
         event.preventDefault();
         this.api.login(this.state.email, this.state.password)
             .then(res => {
-                if (res) {
+                if (!res) {
                     return alert("Sorry those credentials don't exist!");
                 }
+                localStorage.setItem("user", res.data);
                 this.props.history.push("/");
             })
             .catch(error => {
@@ -44,6 +45,9 @@ export default class Login extends Component {
     }
 
     render() {
+        if (this.api.loggedIn()) {
+            return (<Redirect to="/"/>);
+        }
         return (
             <div className="login-page">
                 <div className="container"> 
