@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import '../App.css'
-var list = [];
+import '../App.css';
+
 export default class Subcategory extends Component{
     
     constructor(props){
@@ -17,9 +17,9 @@ export default class Subcategory extends Component{
         //Map de los objetos en list, cada uno es una fila
         return(
             <tr>
-                <td>{/*Info del dueño */}</td>
-                <td>{/*Nombre */}</td>
-                <td>{/*Disponibilidad */}</td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         );
     }

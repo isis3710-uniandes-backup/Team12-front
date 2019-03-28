@@ -1,25 +1,24 @@
 
 import React, { Component } from 'react';
-
+import { Route, HashRouter } from "react-router-dom";
 import Header from './components/header'
 import Footer from './components/footer';
-//import './App.css';
+import Home from './components/home';
+import Login from './components/login';
+import SignUp from './components/signup';
+import './App.css'
+
 class App extends Component {
   render() {
-    var datos = {
-      "name":"Monda",
-      "available":true,
-      "description":"Lorem ipsumijwofijwjfowijef",
-      "price":2300
-    }
-    //TODO ESTO ES DEL TEMPLATE. SOLO CORRESPONDE A LA PARTE SUPERIOR y navbar
     return (
       <div>
-        {/* header */}
-        <Header/>
-        {/* //header */}	
-        {/* //footer */}		
-        <Footer/>
+        <HashRouter>
+            <Header/>
+            <Route exact path="/" component={Home}/>
+            <Route path="/login" component={Login}/>
+            <Route path="/signup" component={SignUp}/>
+            <Footer/>
+        </HashRouter>
       </div>
 
     );

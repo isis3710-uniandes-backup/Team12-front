@@ -1,25 +1,21 @@
 import React, {Component} from 'react';
+import { NavLink } from "react-router-dom";
+import '../App.css'
 
-export default class Header {
-    renderCategories(){
-        //API call, map, ul y li
-    };
-    render(){
+export default class Header extends Component {
+    render() {
         return(
             <div className="header">
-            <div className="w3ls-header">{/*header-one*/} 
-                <div className="w3ls-header-left">
-                <p><a href="#">UPTO $50 OFF ON LAPTOPS | USE COUPON CODE LAPPY </a></p>
-                </div>
+            <div className="w3ls-header">
                 <div className="w3ls-header-right">
                 <ul>
                     <li className="dropdown head-dpdn">
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i className="fa fa-user" aria-hidden="true" /> My Account<span className="caret" /></a>
                     <ul className="dropdown-menu">
-                        <li><a href="login.html">Login </a></li> 
-                        <li><a href="signup.html">Sign Up</a></li> 
-                        <li><a href="login.html">My Orders</a></li>  
-                        <li><a href="login.html">Wallet</a></li> 
+                        <li><NavLink to="/login">Login</NavLink></li>
+                        <li><NavLink to="/signup">Sign Up</NavLink></li>
+                        <li><NavLink to="/login">My Orders</NavLink></li>  
+                        <li><NavLink to="/login">Wallet</NavLink></li> 
                     </ul> 
                     </li> 
                     <li className="dropdown head-dpdn">
@@ -51,10 +47,10 @@ export default class Header {
                 </div>
                 <div className="clearfix"> </div> 
             </div>
-            <div className="header-two">{/* header-two */}
+            <div className="header-two">
                 <div className="container">
                 <div className="header-logo">
-                    <h1><a href="index.html"><span>Te</span>lo<i>Presto</i></a></h1>
+                    <h1><NavLink to="/"><span>Te</span>lo<i>Presto</i></NavLink></h1>
                     <h6>Intercambia todo lo que necesites</h6> 
                 </div>	
                 <div className="header-search">
@@ -80,8 +76,8 @@ export default class Header {
                 </div> 
                 <div className="clearfix"> </div>
                 </div>		
-            </div>{/* //header-two */}
-            <div className="header-three">{/* header-three */}
+            </div>
+            <div className="header-three">
                 <div className="container">
                 <div className="menu">
                     <div className="cd-dropdown-wrapper">
@@ -203,8 +199,8 @@ export default class Header {
                                 <li><a href="products.html">cables</a></li>
                                 </ul>
                             </li>
-                            </ul> {/* .cd-secondary-dropdown */} 
-                        </li> {/* .has-children */}
+                            </ul>  
+                        </li> 
                         <li className="has-children">
                             <a href="#">Fashion Store</a> 
                             <ul className="cd-secondary-dropdown is-hidden">
@@ -288,8 +284,8 @@ export default class Header {
                                 <li><a href="products1.html">Bath &amp; Spa</a></li>   
                                 </ul>
                             </li>
-                            </ul> {/* .cd-secondary-dropdown */} 
-                        </li> {/* .has-children */}
+                            </ul>  
+                        </li> 
                         <li className="has-children">
                             <a href="products2.html">Kids Fashion &amp; Toys</a> 
                             <ul className="cd-secondary-dropdown is-hidden"> 
@@ -332,8 +328,8 @@ export default class Header {
                                     </ul>
                                 </li>  
                                 <li><a href="products2.html">Toddlers' Rooms</a></li> 	
-                                </ul>{/* .cd-secondary-dropdown */} 
-                            </li> {/* .has-children */}								
+                                </ul> 
+                            </li> 								
                             <li className="has-children"><a href="#">TOYS &amp; GAMES </a>
                                 <ul className="is-hidden"> 
                                 <li className="go-back"><a href="#">All Kids Fashions</a></li>
@@ -355,8 +351,8 @@ export default class Header {
                                 <li><a href="products2.html">PC &amp; Digital Gaming</a></li>
                                 </ul>	
                             </li> 
-                            </ul>{/* .cd-secondary-dropdown */} 
-                        </li> {/* .has-children */} 
+                            </ul> 
+                        </li>  
                         <li className="has-children">
                             <a href="#">Home, Furniture &amp; Patio</a> 
                             <ul className="cd-secondary-dropdown is-hidden">
@@ -421,8 +417,8 @@ export default class Header {
                                 <li><a href="products3.html">Tool Kits</a></li>
                                 </ul>
                             </li>  
-                            </ul>{/* .cd-secondary-dropdown */} 
-                        </li> {/* .has-children */}  
+                            </ul> 
+                        </li>   
                         <li className="has-children">
                             <a href="#">Sports, Fitness &amp; Outdoor</a>
                             <ul className="cd-secondary-dropdown is-hidden">
@@ -494,8 +490,8 @@ export default class Header {
                                 <li><a href="products4.html">Health Drinks </a></li> 
                                 </ul>
                             </li> 	
-                            </ul>{/* .cd-secondary-dropdown */} 
-                        </li> {/* .has-children */}  
+                            </ul> 
+                        </li>   
                         <li className="has-children">
                             <a href="#">Grocery store</a>
                             <ul className="cd-secondary-dropdown is-hidden">
@@ -565,8 +561,8 @@ export default class Header {
                                 <li><a href="products5.html">Nutrition</a></li> 
                                 </ul>
                             </li> 
-                            </ul>{/* .cd-secondary-dropdown */} 
-                        </li> {/* .has-children */}  
+                            </ul> 
+                        </li>   
                         <li className="has-children">
                             <a href="#">Photo, Gifts &amp; Office Supplies</a>
                             <ul className="cd-secondary-dropdown is-hidden">
@@ -638,7 +634,7 @@ export default class Header {
                                 <li><a href="products6.html">Cakes</a></li>
                                 </ul>
                             </li> 
-                            </ul>{/* .cd-secondary-dropdown */} 
+                            </ul> 
                         </li> 
                         <li className="has-children">
                             <a href="#">Health, Beauty &amp; Pharmacy</a>
@@ -699,7 +695,7 @@ export default class Header {
                                 <li><a href="products7.html">Pharmacy Help</a></li> 
                                 </ul>
                             </li>  
-                            </ul>{/* .cd-secondary-dropdown */} 
+                            </ul> 
                         </li>
                         <li className="has-children">
                             <a href="#">Automotive</a>
@@ -772,7 +768,7 @@ export default class Header {
                                 <li><a href="products8.html">Detailing Kits </a></li>
                                 </ul>
                             </li> 
-                            </ul>{/* .cd-secondary-dropdown */} 
+                            </ul> 
                         </li>
                         <li className="has-children">
                             <a href="#">Books, Music &amp; Movies</a>
@@ -852,15 +848,12 @@ export default class Header {
                                 <li><a href="products9.html">Top Shows</a></li> 
                                 </ul>
                             </li> 
-                            </ul>{/* .cd-secondary-dropdown */} 
+                            </ul> 
                         </li>  
                         <li><a href="sitemap.html">Full Site Directory </a></li>  
-                        </ul> {/* .cd-dropdown-content */}
-                    </nav> {/* .cd-dropdown */}
-                    </div> {/* .cd-dropdown-wrapper */}	 
-                </div>
-                <div className="move-text">
-                    <div className="marquee"><a href="offers.html"> New collections are available here...... <span>Get extra 10% off on everything | no extra taxes </span> <span> Try shipping pass free for 15 days with unlimited</span></a></div>
+                        </ul> 
+                    </nav> 
+                    </div> 	 
                 </div>
                 </div>
             </div>

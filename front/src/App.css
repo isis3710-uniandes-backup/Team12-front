@@ -33,7 +33,6 @@
 }
 
 /*ESTO ES TODO TOMADO DEL TEMPLATE*/
-/*HAY IMAGENES QUE SE REFERENCIAN PERO NO EXISTEN EN EL PROYECTO*/
 
 body{
 	margin:0; 
@@ -287,7 +286,7 @@ ul.cd-dropdown-content li {
 /*-- header-three --*/ 
 .header-three {
     border-bottom: 1px solid #eaeaea; 
-    background: url(../images/bg.png)#08bce4 no-repeat;
+    background: url(/images/bg.png)#08bce4 no-repeat;
     background-size: cover;  
 }
 /*-- //header-three --*/
@@ -545,18 +544,18 @@ h3.w3ls-title {
 /*-- //welcome --*/
 /*-- add-products --*/
 .w3ls-add-grids {
-    background: url(../images/img1.jpg)no-repeat 0px 0px;
+    background: url(/images/img1.jpg)no-repeat 0px 0px;
     background-size: cover;
 	width: 32.5%;
 	min-height: 250px;
 	float:left;
 }
 .w3ls-add-grids.w3ls-add-grids-mdl{
-    background: url(../images/img2.jpg)no-repeat 0px 0px; 
+    background: url(/images/img2.jpg)no-repeat 0px 0px; 
 	background-size: cover;
 }
 .w3ls-add-grids.w3ls-add-grids-mdl1{
-    background: url(../images/img3.jpg)no-repeat 0px 0px; 
+    background: url(/images/img3.jpg)no-repeat 0px 0px; 
 	background-size: cover;
 }
 .w3ls-add-grids.w3ls-add-grids-mdl {
@@ -756,7 +755,7 @@ p {
 }
 .w3agile-ftr-top {
     padding: 4em 0;
-    background: url(../images/bg1.jpg)no-repeat center 0px;
+    background: url(/images/bg1.jpg)no-repeat center 0px;
 	background-size: cover; 
 }
 .ftr-top-left {
@@ -805,7 +804,7 @@ p {
 .soon{
     margin-top: 5em;
 	padding:5em 0;
-    background: url(../images/bg2.jpg)no-repeat center 0px;
+    background: url(/images/bg2.jpg)no-repeat center 0px;
 	text-align: center;
 	background-size: cover;
 }
@@ -984,7 +983,7 @@ p {
 /*-- footer --*/
 .footer {
     padding-top: 5em;
-    background: url(../images/bg.png)#42d406 no-repeat;
+    background: url(/images/bg.png)#42d406 no-repeat;
     background-size: cover;
 }
 .footer-logo.header-logo {
@@ -1001,7 +1000,7 @@ p {
 }
 .address-right:before {
     content: '';
-    background: url(../images/a1.png)no-repeat 0px 0px;
+    background: url(/images/a1.png)no-repeat 0px 0px;
     background-size: 100%;
     display: block;
     position: absolute;
@@ -1087,7 +1086,7 @@ p {
 	height: 32px;
 	border: none;
 	text-indent: 100%;
-	background: url("../images/move-up.png") no-repeat 0px 0px;
+	background: url("/images/move-up.png") no-repeat 0px 0px;
 	z-index:999;
 }
 #toTopHover {
@@ -1343,7 +1342,7 @@ input.item_quantity:hover{
 }
 .checkbox input + i:after {
     content: '';
-    background: url("../images/tick.png") no-repeat 4px 3px;
+    background: url("/images/tick.png") no-repeat 4px 3px;
     top: -1px;
     left: -1px;
     width: 17px;
@@ -1639,12 +1638,12 @@ h3.w3ls-title.w3ls-title1 {
 	padding: 3em;
 }
 .offer-bottom-grids-info {
-    background: url(../images/img2.jpg)no-repeat center 0px;
+    background: url(/images/img2.jpg)no-repeat center 0px;
     background-size: cover; 
     text-align: right; 
 }
 .offer-bottom-grids-info2{
-    background: url(../images/bg2.jpg)no-repeat center 0px;
+    background: url(/images/bg2.jpg)no-repeat center 0px;
     background-size: cover; 
 }
 .offer-bottom-grids h4 {
@@ -1757,7 +1756,7 @@ h3.w3ls-title.w3ls-title1 {
 /*-- card-page --*/
 .agile-card-top {
     padding: 4em  5em;
-    background: url(../images/bg.png)#4dff03 no-repeat;
+    background: url(/images/bg.png)#4dff03 no-repeat;
     background-size: cover;
 }
 .card-top-grids {
