@@ -5,12 +5,18 @@ export default class Category extends Component{
     
     constructor(props){
         super(props);
-        
+        this.state = {
+            items = []
+        }
     }
     
     getItems(){
         //con un framework se hace get al API y se guarda el arreglo
         //list = fetch('',(err)=>{})
+        fetch('localhost:3000')
+        .then((response)=>{
+            console.log(response);
+        })
     }
 
     renderItemList(){
