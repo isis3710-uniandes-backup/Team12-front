@@ -60,7 +60,7 @@ export default class SignUp extends Component {
                 if (!res) {
                     return alert("Sorry, unable to create user");
                 }
-                localStorage.setItem("user", res.data);
+                localStorage.setItem("user", JSON.stringify(res.data));
                 this.props.history.push("/");
             })
             .catch(error => {
