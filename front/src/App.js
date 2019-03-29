@@ -6,6 +6,7 @@ import Footer from './components/footer';
 import Home from './components/home';
 import Login from './components/login';
 import SignUp from './components/signup';
+import updateUser from './components/updateUser';
 import './App.css'
 import prestamo from './components/prestamo';
 
@@ -18,6 +19,7 @@ class App extends Component {
             <Route exact path="/" component={Home}/>
             <Route path="/login" component={Login}/>
             <Route path="/signup" component={SignUp}/>
+            <Route path="/updateUser" component={updateUser}/>
             <Route path="/prestamos" component={prestamo}/>
             <Footer/>
         </HashRouter>
