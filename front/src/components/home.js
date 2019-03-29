@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import { Container, Row, Col } from 'reactstrap';
 
 
 export default class Home extends Component {
@@ -18,7 +19,19 @@ export default class Home extends Component {
         })
     }
     renderObjects(){
-      return (<div></div>);
+      return (
+        this.state.items.map((item,index)=>{
+          return(
+            <tr>
+              <td>{item.name}</td>
+              <td>{item.price}</td>
+              <td>{(item.rating)?item.rating:"No hay valoraciones"}</td>
+              <td>{(item.available)?"Disponible":"No disponible"}</td>
+              <td>{item.description}</td>
+            </tr>
+          )
+        })
+      );
     }
     constructor(props) {
         super(props);
@@ -30,9 +43,9 @@ export default class Home extends Component {
     render() {
       return (
         <div className = "container">
-            <h1>Todos los objetos</h1>
-            {this.renderObjects()}
-            <h1>Más sobre telopresto</h1>
+            
+            <h1>Conoce sobre telopresto</h1>
+            <hr/>
             <Carousel>
                 <div>
                     <img src="https://www.sunlife.ca/static/ca/Learn%20and%20Plan/images/INT165-lending-your-car_1200x600.jpg" />
@@ -47,6 +60,23 @@ export default class Home extends Component {
                     <p className="legend">Es una forma fácil de ayudar a otros y ganar algo de dinero</p>
                 </div>
             </Carousel>
+
+            <h1>Todos los objetos</h1>
+            <hr/>
+            <div>
+              <table className = "table-responsive">
+                <thead>
+                  <th>Nombre</th>
+                  <th>Precio</th>
+                  <th>Rating</th>
+                  <th>Disponible</th>
+                  <th>Descripción</th>
+                </thead>
+                <tbody>{this.renderObjects()}</tbody>
+                
+              </table>
+            </div>
+           
         </div>
       );
     }
