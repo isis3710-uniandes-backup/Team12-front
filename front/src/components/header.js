@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { NavLink } from "react-router-dom";
-import '../App.css'
+import '../App.css';
+import 'font-awesome/css/font-awesome.min.css';
 import ApiHelper from './ApiHelper';
 
 export default class Header extends Component {
