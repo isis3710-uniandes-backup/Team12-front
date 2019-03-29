@@ -7,6 +7,7 @@ import Home from './components/home';
 import Login from './components/login';
 import SignUp from './components/signup';
 import './App.css'
+import prestamo from './components/prestamo';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
             <Route exact path="/" component={Home}/>
             <Route path="/login" component={Login}/>
             <Route path="/signup" component={SignUp}/>
+            <Route path="/prestamos" component={prestamo}/>
             <Footer/>
         </HashRouter>
       </div>
