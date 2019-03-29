@@ -24,8 +24,8 @@ class App extends Component {
             <Route path="/signup" component={SignUp}/>
             <Route path="/updateUser" component={updateUser}/>
             <Route path="/prestamos" component={prestamo}/>
-            <Route path="/categories" component={Category}/>
-            <Route path="/categories/:categoryID/subcategories/" component={Subcategory}/>
+            <Route path="/categories/:categoryID" component={Category}/>
+            <Route path="/subcategories/" component={Subcategory}/>
             <Route path="/item/:itemID" component={Item} />
 
             <Footer/>

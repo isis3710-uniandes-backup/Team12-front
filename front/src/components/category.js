@@ -11,7 +11,7 @@ export default class Category extends Component{
     }
     
     componentDidMount(){
-        fetch('http://localhost:3001/objetos').then(
+        fetch(`http://localhost:3001/objetos/category/${this.props.match.params.categoryID}`).then(
               response => response.json()
           ).then(
               data => {
@@ -22,6 +22,7 @@ export default class Category extends Component{
           ).catch(error => {
               console.log(error);
           })
+          console.log(this.props)
       }
 
     renderItemList(){
