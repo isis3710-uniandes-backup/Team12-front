@@ -38,7 +38,7 @@ componentDidMount = () => {
       <div className="container">
       <h2>Update a loan</h2>
       
-       <form onSubmit={()=>this.update({ startDate: this.state.startDate, endDate: this.state.endDate})}>
+       <form onSubmit={()=>this.update({ id: this.state.id, startDate: this.state.startDate, endDate: this.state.endDate})}>
         <div className="form-group">
             <label htmlFor="startDate">Start Date: </label>
             <input name="startDate" value={this.state.startDate} className="form-control" id="startDate" placeholder="dd/mm/aa" onChange={this.onChange}/>
