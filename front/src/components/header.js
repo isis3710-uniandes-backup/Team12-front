@@ -20,7 +20,7 @@ export default class Header extends Component {
             data => {
                 this.setState({
                     categories : data
-                })
+                });
             }
         ).catch(error => {
             console.log(error);
@@ -82,6 +82,7 @@ export default class Header extends Component {
     }
 
     render() {
+        this.state.categories = Array.from(this.state.categories);
         return(
             <div className="header">
                 <div className="w3ls-header">
