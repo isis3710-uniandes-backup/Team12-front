@@ -18,7 +18,7 @@ Se utilizaran los frameworks node.js y react.js para construir el front, que per
 -Prestamo<br>
 
 <b>Despliegue</b><hr>
-Para desplegar esta aplicacion es necesario clonar los respositorios de Team12-front y Team12-back o descargarlos y descomprimir el código. Luego de esto, se abre un terminal de comandos en la ubicacion del proyecto (o se usa el comando cd), y en el directorio raiz se ejecuta el comando npm install, y al finalizar, se ejecuta npm start. <br>
+Para desplegar esta aplicacion es necesario clonar los respositorios de Team12-front y Team12-back o descargarlos y descomprimir el código. Luego de esto, se abre un terminal de comandos en la ubicacion del proyecto (o se usa el comando cd), y en el directorio raiz se ejecuta el comando npm install, y al finalizar, se ejecuta npm start. Nota: Es necesario ejecutar el back y luego el front <br>
 Para consultar los recursos se puede hacer mediante las siguientes rutas:
 - http://localhost:3000/#/ para acceder al inicio <br>
 - http://localhost:3000/#/login para hacer login en la aplicación <br>
