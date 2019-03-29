@@ -27,6 +27,17 @@ export default class ApiHelper {
     });
   };
 
+  updateUser = (user) => {
+    var id = user.id;
+    delete user.id;
+    return this.fetch(`http://localhost:3001/users/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(user)
+    }).then(res => {
+      return Promise.resolve(res);
+    });
+  };
+
   loggedIn = () => {
     // Checks if there is a saved token and it's still valid
     const token = this.getToken(); // Getting token from localstorage

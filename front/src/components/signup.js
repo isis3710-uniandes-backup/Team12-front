@@ -64,7 +64,7 @@ export default class SignUp extends Component {
                 this.props.history.push("/");
             })
             .catch(error => {
-                alert('Email or password were incorrect');
+                alert(error);
                 this.setState({
                     password: ''
                 });
