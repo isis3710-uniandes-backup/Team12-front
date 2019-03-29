@@ -38,7 +38,7 @@ export default class Header extends Component {
                         <li className="go-back"><a href="#">Menu</a></li>
                         <li className="see-all"><NavLink to={`/categories/${cat.id}`}>{`All ${cat.name}`}</NavLink></li>
                         {cat.subcategories.map((subcat, index) => (
-                            <li key = {subcat.id}><NavLink to= {`/categories${cat.id}/subcategories/${subcat.id}`}>{subcat.name}</NavLink></li>
+                            <li key = {subcat.id}><NavLink to= {`/categories/${cat.id}/subcategories/${subcat.id}`}>{subcat.name}</NavLink></li>
                         ))}
                     </ul>
                 </li>
