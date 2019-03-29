@@ -4,13 +4,16 @@ import '../App.css'
 import ApiHelper from './ApiHelper';
 
 export default class Header extends Component {
+    api = new ApiHelper();
     constructor(props){
         super(props);
+        this.handleLogout = this.handleLogout.bind(this);
+        
     }
     state = {
         categories : []
     }
-    componentDidMount(){
+    componentWillMount(){
         fetch('http://localhost:3001/categories').then(
             response => response.json()
         ).then(
@@ -18,55 +21,73 @@ export default class Header extends Component {
                 this.setState({
                     categories : data
                 })
-                console.log(data)
             }
         ).catch(error => {
             console.log(error);
         })
     }
+    
+    componentDidUpdate(){
+        this.render()
+    }
     renderCategory(id){
-        var cat = this.state.categories.find(obj => {
-            return obj.id === id
-        });
-        var arr = cat.subcategories;
-        var lista = (typeof (arr) != undefined && (Array.isArray(arr) && arr.length) )?(
-            <li className = "has-children">
-                <ul className = "cd-secondary-dropdown is-hidden">
-                    <li className="go-back"><a href="#">Menu</a></li>
-                    <li className="see-all"><a href="products.html">{`All ${cat.name}`}</a></li>
-                    
-                    {cat.subcategories.map(subcat => (
-                        <li key = {subcat.id}>{subcat.name}</li>
-                    ))}
-                </ul>
-            </li>
-        ):(
-            <li><NavLink to= '/'>{cat.name}</NavLink></li>
-        );
-        return(
-          <li>
-              <NavLink to="/categories/:idCat">{cat.name}</NavLink>
-              {lista}
-          </li>  
-        );
+        if(this.state.categories.length){
+            var cat = null;
+            console.log(this.state.categories [id])
+            for(let i = 1; i<this.state.categories.length;i++){
+                let actual = this.state.categories [i];
+                if(actual.id==id){
+                    cat = this.state.categories [i];
+                    break;
+                }
+            }
+            var arr = cat.subcategories;
+            var lista = (typeof (arr) != undefined && arr !=null && (Array.isArray(arr) && arr.length) )?(
+                <li className = "has-children">
+                    <NavLink to="/categories/:idCat">{cat.name}</NavLink>
+                    <ul className = "cd-secondary-dropdown is-hidden">
+                        <li className="go-back"><a href="#">Menu</a></li>
+                        <li className="see-all"><a href="products.html">{`All ${cat.name}`}</a></li>
+                        
+                        {cat.subcategories.map(subcat => (
+                            <li key = {subcat.id}>{subcat.name}</li>
+                        ))}
+                    </ul>
+                </li>
+            ):(
+                <li><NavLink to = "">{cat.name}</NavLink></li>
+            );
+        }
+        
+        return lista;
     }
 
+    renderCategories(){
+        return (this.state.categories.length)?this.state.categories.map(cat =>(this.renderCategory(cat.id))):(<span></span>)
+    }
+    handleLogout(event){
+        event.preventDefault();
+
+        if(this.api.loggedIn()){
+            this.api.logout()
+            this.setState(this.state)
+        }
+            
+    }
 
     render() {
         return(
             <div className="header">
-                <div>
-                </div>
                 <div className="w3ls-header">
                     <div className="w3ls-header-right">
                         <ul>
                             <li className="dropdown head-dpdn">
                             <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i className="fa fa-user" aria-hidden="true" /> My Account<span className="caret" /></a>
                             <ul className="dropdown-menu">
-                                <li><NavLink to="/login">Login</NavLink></li>
-                                <li><NavLink to="/signup">Sign Up</NavLink></li>
+                                <li><NavLink to="/login" style={{display: this.api.loggedIn() ? 'none' : 'block' }}>Login</NavLink></li>
+                                <li><NavLink to="/signup" style={{display: this.api.loggedIn() ? 'none' : 'block' }}>Sign Up</NavLink></li>
                                 <li><NavLink to="/login">My Orders</NavLink></li>  
-                                <li><a>Logout</a></li> 
+                                <li><a style={{display: this.api.loggedIn() ? 'none' : 'block' }} onClick = {this.handleLogout}>Logout</a></li> 
                             </ul> 
                             </li> 
                         </ul>
@@ -110,6 +131,7 @@ export default class Header extends Component {
                                 <nav className="cd-dropdown"> 
                                     <a href="#0" className="cd-close">Close</a>
                                     <ul className="cd-dropdown-content"> 
+                                        {this.renderCategories()}
                                     <li><a href="offers.html">Today's Offers</a></li>
                                     <li className="has-children">
                                         <a href="#">Electronics</a> 
