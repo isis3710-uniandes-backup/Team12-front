@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter, Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import '../App.css';
 import ApiHelper from './ApiHelper';
 
