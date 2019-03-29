@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { NavLink } from "react-router-dom";
-import '../App.css'
+import '../App.css';
+import 'font-awesome/css/font-awesome.min.css';
 import ApiHelper from './ApiHelper';
 
 export default class Header extends Component {
@@ -75,7 +76,8 @@ export default class Header extends Component {
                             <ul className="dropdown-menu">
                                 <li><NavLink to="/login" style={{display: this.api.loggedIn() ? 'none' : 'block'}}>Login</NavLink></li>
                                 <li><NavLink to="/signup" style={{display: this.api.loggedIn() ? 'none' : 'block'}}>Sign Up</NavLink></li>
-                                <li><NavLink to="/login" style={{display: this.api.loggedIn() ? 'block' : 'none'}}>My Orders</NavLink></li>  
+                                <li><NavLink to="/" style={{display: this.api.loggedIn() ? 'block' : 'none'}}>My Orders</NavLink></li> 
+                                <li><NavLink to="/updateUser" style={{display: this.api.loggedIn() ? 'block' : 'none'}}>Update data</NavLink></li>  
                                 <li><a style={{display: this.api.loggedIn() ? 'block' : 'none' }} onClick={this.handleLogout}>Logout</a></li> 
                             </ul> 
                             </li> 
