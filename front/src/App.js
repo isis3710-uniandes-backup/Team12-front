@@ -9,6 +9,9 @@ import SignUp from './components/signup';
 import updateUser from './components/updateUser';
 import './App.css'
 import prestamo from './components/prestamo';
+import Category from './components/category';
+import Subcategory from './components/subcategory';
+import Item from './components/item'
 
 class App extends Component {
   render() {
@@ -21,6 +24,10 @@ class App extends Component {
             <Route path="/signup" component={SignUp}/>
             <Route path="/updateUser" component={updateUser}/>
             <Route path="/prestamos" component={prestamo}/>
+            <Route path="/categories" component={Category}/>
+            <Route path="/categories/:categoryID/subcategories/" component={Subcategory}/>
+            <Route path="/item/:itemID" component={Item} />
+
             <Footer/>
         </HashRouter>
       </div>

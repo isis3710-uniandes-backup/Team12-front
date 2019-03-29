@@ -33,17 +33,17 @@ export default class Header extends Component {
             var arr = cat.subcategories;
             var lista = (typeof (arr) != undefined && arr !=null && (Array.isArray(arr) && arr.length) )?(
                 <li  className = "has-children">
-                    <NavLink to="/categories/:idCat">{cat.name}</NavLink>
+                    <NavLink to={`/categories/${cat.id}`}>{cat.name}</NavLink>
                     <ul className = "cd-secondary-dropdown is-hidden">
                         <li className="go-back"><a href="#">Menu</a></li>
-                        <li className="see-all"><a href="products.html">{`All ${cat.name}`}</a></li>
+                        <li className="see-all"><NavLink to={`/categories/${cat.id}`}>{`All ${cat.name}`}</NavLink></li>
                         {cat.subcategories.map((subcat, index) => (
-                            <li key = {subcat.id}>{subcat.name}</li>
+                            <li key = {subcat.id}><NavLink to= {`/categories${cat.id}/subcategories/${subcat.id}`}>{subcat.name}</NavLink></li>
                         ))}
                     </ul>
                 </li>
             ):(
-                <li><NavLink to = "">{cat.name}</NavLink></li>
+                <li><NavLink to = {`/categories/${cat.id}`}>{cat.name}</NavLink></li>
             );
         return lista;
     }
@@ -72,7 +72,7 @@ export default class Header extends Component {
                     <div className="w3ls-header-right">
                         <ul>
                             <li className="dropdown head-dpdn">
-                            <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i className="fa fa-user" aria-hidden="true" /> Mi cuenta<span className="caret" /></a>
+                            <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i className="fa fa-user" aria-hidden="true" /> My account<span className="caret" /></a>
                             <ul className="dropdown-menu">
                                 <li><NavLink to="/login" style={{display: this.api.loggedIn() ? 'none' : 'block'}}>Login</NavLink></li>
                                 <li><NavLink to="/signup" style={{display: this.api.loggedIn() ? 'none' : 'block'}}>Sign Up</NavLink></li>
@@ -89,14 +89,14 @@ export default class Header extends Component {
                     <div className="container">
                         <div className="header-logo">
                             <h1><NavLink to="/"><span>Te</span>lo<i>Presto</i></NavLink></h1>
-                            <h6>Intercambia todo lo que necesites</h6> 
+                            <h6>Exchange everything you need</h6> 
                         </div>	
                         <div className="header-search">
                             <form action="#" method="post">
-                            <input type="search" name="Search" placeholder="Busca un producto o servicio..." required />
-                            <button type="submit" className="btn btn-default" aria-label="Left Align">
-                                <i className="fa fa-search" aria-hidden="true"> </i>
-                            </button>
+                                <input type="search" name="Search" placeholder="Busca un producto o servicio..." required />
+                                <button type="submit" className="btn btn-default" aria-label="Left Align">
+                                    <i className="fa fa-search" aria-hidden="true"> </i>
+                                </button>
                             </form>
                         </div>
                         <div className="header-cart"> 

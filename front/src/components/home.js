@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import { Container, Row, Col } from 'reactstrap';
 
 
 export default class Home extends Component {
@@ -64,13 +63,15 @@ export default class Home extends Component {
             <h1>Todos los objetos</h1>
             <hr/>
             <div>
-              <table className = "table-responsive">
+              <table className = "table">
                 <thead>
-                  <th>Nombre</th>
-                  <th>Precio</th>
-                  <th>Rating</th>
-                  <th>Disponible</th>
-                  <th>Descripción</th>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Rating</th>
+                    <th>Disponible</th>
+                    <th>Descripción</th>
+                  </tr>
                 </thead>
                 <tbody>{this.renderObjects()}</tbody>
                 
