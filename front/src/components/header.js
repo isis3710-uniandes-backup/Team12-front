@@ -8,11 +8,11 @@ export default class Header extends Component {
     constructor(props){
         super(props);
         this.handleLogout = this.handleLogout.bind(this);
-        
+        this.state = {
+            categories : []
+        }
     }
-    state = {
-        categories : []
-    }
+    
     componentWillMount(){
         fetch('http://localhost:3001/categories').then(
             response => response.json()
@@ -30,9 +30,9 @@ export default class Header extends Component {
     componentDidUpdate(){
         this.render()
     }
-    renderCategory(id){
+    renderCategory(cat,id){
         if(this.state.categories.length){
-            var cat = null;
+            /*var cat = null;
             console.log(this.state.categories [id])
             for(let i = 1; i<this.state.categories.length;i++){
                 let actual = this.state.categories [i];
@@ -40,10 +40,10 @@ export default class Header extends Component {
                     cat = this.state.categories [i];
                     break;
                 }
-            }
+            }*/
             var arr = cat.subcategories;
             var lista = (typeof (arr) != undefined && arr !=null && (Array.isArray(arr) && arr.length) )?(
-                <li className = "has-children">
+                <li  className = "has-children">
                     <NavLink to="/categories/:idCat">{cat.name}</NavLink>
                     <ul className = "cd-secondary-dropdown is-hidden">
                         <li className="go-back"><a href="#">Menu</a></li>
@@ -63,7 +63,13 @@ export default class Header extends Component {
     }
 
     renderCategories(){
-        return (this.state.categories.length)?this.state.categories.map(cat =>(this.renderCategory(cat.id))):(<span></span>)
+        console.log(this.state)
+        return (
+            <ul className="cd-dropdown-content">
+                {this.state.categories.map((cat, id) =>{this.renderCategory(cat, id)})}
+            </ul>
+            
+        )
     }
     handleLogout(event){
         event.preventDefault();
