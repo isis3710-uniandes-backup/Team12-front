@@ -71,7 +71,7 @@ export default class Header extends Component {
                     <div className="w3ls-header-right">
                         <ul>
                             <li className="dropdown head-dpdn">
-                            <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i className="fa fa-user" aria-hidden="true" /> My Account<span className="caret" /></a>
+                            <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i className="fa fa-user" aria-hidden="true" /> Mi cuenta<span className="caret" /></a>
                             <ul className="dropdown-menu">
                                 <li><NavLink to="/login" style={{display: this.api.loggedIn() ? 'none' : 'block'}}>Login</NavLink></li>
                                 <li><NavLink to="/signup" style={{display: this.api.loggedIn() ? 'none' : 'block'}}>Sign Up</NavLink></li>
@@ -91,7 +91,7 @@ export default class Header extends Component {
                         </div>	
                         <div className="header-search">
                             <form action="#" method="post">
-                            <input type="search" name="Search" placeholder="Search for a Product..." required />
+                            <input type="search" name="Search" placeholder="Busca un producto o servicio..." required />
                             <button type="submit" className="btn btn-default" aria-label="Left Align">
                                 <i className="fa fa-search" aria-hidden="true"> </i>
                             </button>
@@ -114,7 +114,7 @@ export default class Header extends Component {
                     <div className="container">
                         <div className="menu">
                             <div className="cd-dropdown-wrapper">
-                                <a className="cd-dropdown-trigger" href="#0">Store Categories</a>
+                                <a className="cd-dropdown-trigger" href="#0">Ver categorias</a>
                                 <nav className="cd-dropdown"> 
                                     <a href="#0" className="cd-close">Close</a>
                                     {this.renderCategories()}
