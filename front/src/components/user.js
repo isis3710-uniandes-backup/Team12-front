@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {FormattedMessage } from 'react-intl';
 
 export default class UserProf extends Component{
     constructor(props){
@@ -10,19 +11,27 @@ export default class UserProf extends Component{
                 <table>
                     <tbody>
                         <tr>
-                            <td>Nombre completo</td>
+                            <td>
+                                <FormattedMessage id="userName"/>
+                            </td>
                             <td>{ `${this.props.name}${this.props.lastname}` }</td>
                         </tr>
                         <tr>
-                            <td>Correo</td>
+                            <td>
+                                <FormattedMessage id="userEmail"/>
+                            </td>
                             <td>{this.props.email}</td>
                         </tr>
                         <tr>
-                            <td>Celular</td>
+                            <td>
+                                <FormattedMessage id="userPhone"/>
+                            </td>
                             <td>{this.props.phone}</td>
                         </tr>
                         <tr>
-                            <td>Direccion</td>
+                            <td>
+                                <FormattedMessage id="userAdd"/>
+                            </td>
                             <td>{this.props.address}</td>
                         </tr>
                     </tbody>

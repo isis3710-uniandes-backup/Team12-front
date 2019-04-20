@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../App.css';
+import {FormattedMessage } from 'react-intl';
 
 export default class Subcategory extends Component{
     
@@ -33,8 +34,8 @@ export default class Subcategory extends Component{
               <tr>
                 <td>{item.name}</td>
                 <td>{item.price}</td>
-                <td>{(item.rating)?item.rating:"No hay valoraciones"}</td>
-                <td>{(item.available)?"Disponible":"No disponible"}</td>
+                <td>{(item.rating)?item.rating:<FormattedMessage id="noRateTag"/>}</td>
+                <td>{(item.available)?<FormattedMessage id="availableTag"/>:<FormattedMessage id="noAvailableTag"/>}</td>
                 <td>{item.description}</td>
               </tr>
             )
@@ -48,17 +49,29 @@ export default class Subcategory extends Component{
             <div className = "container">
             
 
-            <h1>Todos los objetos de esta subcategoria</h1>
+            <h1>
+              <FormattedMessage id="allObjSubc"/>
+            </h1>
             <hr/>
             <div>
               <table className = "table">
                 <thead>
                   <tr>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Rating</th>
-                    <th>Disponible</th>
-                    <th>Descripción</th>
+                  <th>
+                      <FormattedMessage id="tItemName"/>
+                    </th>
+                    <th>
+                      <FormattedMessage id="tItemPrice"/>
+                    </th>
+                    <th>
+                      <FormattedMessage id="tItemRate"/>
+                    </th>
+                    <th>
+                      <FormattedMessage id="tItemAv"/>
+                    </th>
+                    <th>
+                      <FormattedMessage id="tItemDes"/>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>{this.renderItemList()}</tbody>

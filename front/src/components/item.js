@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 //import '../App.css'
 import ApiHelper from './ApiHelper';
+import { FormattedMessage } from 'react-intl';
+
 
 export default class Item extends Component{
     api = new ApiHelper();
@@ -12,20 +14,22 @@ export default class Item extends Component{
         if(this.props.data.available === true){
             return (
                 <span className = 'availablility'>
-                   Disponible
+                    <FormattedMessage id="availableTag"/>
+
                 </span>
             );
         }
         else{
             return (
                 <span className = 'non-availability'>
-                    Elemento no disponible
+                    <FormattedMessage id="noAvailableTag"/>
+
                 </span>
             )
         }
     }
     handleClick(){
-        alert("Gracias por pedir este item")
+        (navigator.language.startsWith("es"))?alert("Gracias por pedir este item"):alert("Thank you for buying this item")
     }
     render(){
         return(
@@ -41,7 +45,7 @@ export default class Item extends Component{
                 </div>
                 <div>
                     <button onClick={this.handleClick}>
-                        {this.props.data.available ? 'Pedir ya' : 'Por ahora no puedes pedir este objeto'}
+                        {this.props.data.available ? <FormattedMessage id="orderAv"/> :<FormattedMessage id="orderUnAv"/> }
                     </button>
                 </div>
             </div>

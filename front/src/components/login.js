@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, Redirect } from "react-router-dom";
 import '../App.css'
 import ApiHelper from './ApiHelper';
+import { FormattedMessage } from 'react-intl';
 
 export default class Login extends Component {
 
@@ -31,13 +32,14 @@ export default class Login extends Component {
         this.api.login(this.state.email, this.state.password)
             .then(res => {
                 if (!res) {
-                    return alert("Sorry those credentials don't exist!");
+                    return (navigator.language.startsWith("es"))? alert("Las credenciales ingresadas no existen"):alert("Sorry those credentials don't exist!");
                 }
                 localStorage.setItem("user", JSON.stringify(res.data));
                 this.props.history.push("/");
             })
             .catch(error => {
-                alert('Email or password were incorrect');
+                console.log(error);
+                (navigator.language.startsWith("es"))?alert('El correo o la contraseña son incorrectos'):alert('Email or password were incorrect');
                 this.setState({
                     password: ''
                 });
@@ -51,21 +53,39 @@ export default class Login extends Component {
         return (
             <div className="login-page">
                 <div className="container"> 
-                    <h3 className="w3ls-title w3ls-title1">Login to your account</h3>  
+                    <h3 className="w3ls-title w3ls-title1">
+                        <FormattedMessage id="logScreenHead"/>
+                    </h3>  
                     <div className="login-body">
                         <form onSubmit={this.handleSubmit}>
-                            <input type="text" className="user" name="email" placeholder="Enter your email" value={this.state.email} onChange={this.handleInputChange} required/>
-                            <input type="password" name="password" className="lock" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} required/>
-                            <input type="submit" defaultValue="Login"/>
+                            <FormattedMessage id="emailHint" defaultMessage="Email">
+                                {placeholder =>
+                                 <input type="text" className="user" name="email" placeholder={placeholder} value={this.state.email} onChange={this.handleInputChange} required/>}
+                            </FormattedMessage>
+                            <FormattedMessage id="pwHint" defaultMessage="Password">
+                                {placeholder =>
+                                 <input type="password" name="password" className="lock" placeholder={placeholder} value={this.state.password} onChange={this.handleInputChange} required/>}
+                            </FormattedMessage>
+                            <FormattedMessage id="submitLogin" defaultMessage="Login">
+                                {placeholder => 
+                                 <input type="submit" value={placeholder}/>}
+                            </FormattedMessage>
                             <div className="forgot-grid">
                                 <div className="forgot">
-                                    <a href="#">Forgot Password?</a>
+                                    <a href="#">
+                                        <FormattedMessage id="forgetPw"/>
+                                    </a>
                                 </div>
                                 <div className="clearfix"></div>
                             </div>
                         </form>
                     </div>  
-                    <h6> Not a Member? <NavLink to="/signup">Sign Up Now »</NavLink></h6>
+                    <h6> 
+                        <FormattedMessage id="notMember"/>
+                        <NavLink to="/signup">
+                            <FormattedMessage id="signUpLink"/>
+                        </NavLink>
+                    </h6>
                 </div>
             </div>
         );

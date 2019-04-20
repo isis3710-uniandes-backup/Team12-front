@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { NavLink, Redirect } from "react-router-dom";
 import '../App.css';
 import ApiHelper from './ApiHelper';
+import {FormattedMessage } from 'react-intl';
+
 
 export default class SignUp extends Component {
 
@@ -78,32 +80,80 @@ export default class SignUp extends Component {
         return (
             <div className="login-page">
               <div className="container"> 
-                <h3 className="w3ls-title w3ls-title1">Create your account</h3>  
+                <h3 className="w3ls-title w3ls-title1">
+                    <FormattedMessage id="signScreenHead"/>
+                </h3>  
                 <div className="login-body">
                   <form onSubmit={this.handleSubmit}>
-                    <input type="text" className="user" name="name" placeholder="Enter your Name" value={this.state.name} onChange={this.handleInputChange} required />
-                    <input type="text" className="user" name="lastname" placeholder="Enter your Lastname" value={this.state.lastname} onChange={this.handleInputChange} required />
-                    <input type="text" className="user" name="dni" placeholder="Enter your DNI" value={this.state.dni} onChange={this.handleInputChange} required />
-                    <input type="text" className="user" name="age" placeholder="Enter your Age" value={this.state.age} onChange={this.handleInputChange} required />
-                    <input type="text" className="user" name="phone" placeholder="Enter your Phone" value={this.state.phone} onChange={this.handleInputChange} required />
-                    <input type="text" className="user" name="address" placeholder="Enter your Address" value={this.state.address} onChange={this.handleInputChange} required />
+                    <FormattedMessage id="nameHint" defaultMessage="Name">
+                        {placeholder =>
+                        <input type="text" className="user" name="name" placeholder={placeholder} value={this.state.name} onChange={this.handleInputChange} required />
+                        }
+                    </FormattedMessage>
+                    <FormattedMessage id="LastnameHint" defaultMessage="Lastname">
+                        {placeholder =>
+                        <input type="text" className="user" name="lastname" placeholder={placeholder} value={this.state.lastname} onChange={this.handleInputChange} required />
+                        }
+                    </FormattedMessage>
+                    <FormattedMessage id="DNIHint" defaultMessage="DNI">
+                        {placeholder =>
+                        <input type="text" className="user" name="dni" placeholder={placeholder} value={this.state.dni} onChange={this.handleInputChange} required />
+                        }
+                    </FormattedMessage>
+                    <FormattedMessage id="AgeHint" defaultMessage="Age">
+                        {placeholder =>
+                        <input type="text" className="user" name="age" placeholder={placeholder} value={this.state.age} onChange={this.handleInputChange} required />
+                        }
+                    </FormattedMessage>
+                    <FormattedMessage id="PhoneHint" defaultMessage="Phone number">
+                        {placeholder =>
+                        <input type="text" className="user" name="phone" placeholder={placeholder} value={this.state.phone} onChange={this.handleInputChange} required />
+                        }
+                    </FormattedMessage>
+                    <FormattedMessage id="addHint" defaultMessage="Address">
+                        {placeholder =>
+                        <input type="text" className="user" name="address" placeholder={placeholder} value={this.state.address} onChange={this.handleInputChange} required />
+                        }
+                    </FormattedMessage>
+                    
                     <select className="selectpicker form-control" name="city_id" value={this.state.city_id} onChange={this.handleInputChange}>
-                        <option value="-1">Select your city</option>
+                        <FormattedMessage id="cityHint" defaultMessage="City">
+                            {cityH =>
+                            <option value="-1">
+                                {cityH}
+                            </option>
+                            }
+                        </FormattedMessage>
                         {this.state.cities.map((city, index) => <option key={index} value={city.id}>{city.name}</option>)}
                     </select>
                     <hr/>
-                    <input type="text" className="user" name="email" placeholder="Enter your email" value={this.state.email} onChange={this.handleInputChange} required />
-                    <input type="password" name="password" className="lock" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} required />
-                    <input type="submit" defaultValue="Sign Up " />
+                    <FormattedMessage id="emailHint" defaultMessage="Email">
+                        {placeholder =>
+                            <input type="text" className="user" name="email" placeholder={placeholder} value={this.state.email} onChange={this.handleInputChange} required/>}
+                    </FormattedMessage>
+                    <FormattedMessage id="pwHint" defaultMessage="Password">
+                        {placeholder =>
+                            <input type="password" name="password" className="lock" placeholder={placeholder} value={this.state.password} onChange={this.handleInputChange} required/>}
+                    </FormattedMessage>
+                    <FormattedMessage id="submitNew" defaultMessage="Signup">
+                        {placeholder => 
+                            <input type="submit" value={placeholder}/>}
+                    </FormattedMessage>
                     <div className="forgot-grid">
                       <div className="forgot">
-                        <a href="#">Forgot Password?</a>
+                        <a href="#">
+                        <FormattedMessage id="forgetPw"/>
+                        </a>
                       </div>
                       <div className="clearfix"> </div>
                     </div>
                   </form>
                 </div>  
-                <h6>Already have an account? <NavLink to="/login">Login Now »</NavLink> </h6>  
+                <h6>
+                    <FormattedMessage id="yesMember"/> 
+                    <NavLink to="/login">
+                        <FormattedMessage id="loginLink"/>
+                    </NavLink> </h6>  
               </div>
             </div>
         );
