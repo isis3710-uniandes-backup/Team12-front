@@ -6,6 +6,22 @@ import { FormattedMessage } from 'react-intl';
 var route = (navigator.language.startsWith("es"))?'http://localhost:3001/objetos':'http://localhost:3001/objetos-en';
 
 export default class Home extends Component {
+  /*para probar lo del carrito tenia
+    someFn = () => {
+      var listInfo = this.state.cart;
+      console.log(this.props)
+      if(listInfo.length!==0)
+          this.props.callback(listInfo);
+    }  
+
+    addToCart(item){
+      this.state.cart.push(item);
+      this.someFn();
+    }
+    Y en el renderObjects, en el botón, tenia
+    <button type="submit" onClick={()=>this.addToCart(item)} aria-label="Left Align" style={{backgroundColor:"lightGreen", fontWeight:"bolder"}}>+</button>
+
+    */
     componentDidMount(){
       fetch(route).then(
             response => response.json()
@@ -30,6 +46,9 @@ export default class Home extends Component {
               <td>{(item.rating)?item.rating:<FormattedMessage id="noRateTag"/>}</td>
               <td>{(item.available)?<FormattedMessage id="availableTag"/>:<FormattedMessage id="noAvailableTag"/>}</td>
               <td>{item.description}</td>
+              <td>
+                <button type="submit" aria-label="Left Align" style={{backgroundColor:"lightGreen", fontWeight:"bolder"}}>+</button>
+              </td>
             </tr>
           )
         })
@@ -39,7 +58,8 @@ export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          items:[]
+          items:[],
+          cart:[]
         }
     }
 
@@ -76,8 +96,8 @@ export default class Home extends Component {
             </h1>
             <hr/>
             <div>
-              <table className = "table">
-                <thead>
+              <table className = "table table-bordered table-responsive" >
+                <thead className ="table-active">
                   <tr>
                     <th>
                       <FormattedMessage id="tItemName"/>
@@ -93,6 +113,9 @@ export default class Home extends Component {
                     </th>
                     <th>
                       <FormattedMessage id="tItemDes"/>
+                    </th>
+                    <th>
+                      <FormattedMessage id="addItem"/>
                     </th>
                   </tr>
                 </thead>

@@ -15,12 +15,27 @@ import Subcategory from './components/subcategory';
 import Item from './components/item'
 
 class App extends Component {
+  /*Para probar lo del carrito puse 
+  state={
+    cart : []
+  };
+
+  myCallback = (dataFromChild) => {
+    this.setState({cart : dataFromChild})
+  };
+  
+
+  tenía las siguientes líneas en el HashRouter
+  <Header cart = {this.state.cart}/>
+  <Route exact path="/" component={()=><Home callback={this.myCallback}/>} />
+  */
+
   render() {
     return (
       <div>
         <HashRouter>
             <Header/>
-            <Route exact path="/" component={Home}/>
+            <Route exact path="/" component={Home} />
             <Route path="/login" component={Login}/>
             <Route path="/signup" component={SignUp}/>
             <Route path="/updateUser" component={updateUser}/>

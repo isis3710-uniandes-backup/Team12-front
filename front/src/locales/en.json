@@ -8,6 +8,8 @@
     "lout":"Logout",
     "slogan":"Exchange everything you need",
     "searchDefault":"Search for products or services",
+    "searchBut":" Go",
+    "cartBut":"Cart",
     "emptyCart":"Your shopping cart is empty",
     "categoryMenu":"All categories",
     "closeMenu":"Close",
@@ -50,6 +52,7 @@
     "userName":"Full name",
     "userEmail":"Email address",
     "userPhone":"Cellphone number",
-    "userAdd":"Address"
+    "userAdd":"Address",
+    "addItem":"Add to cart"
 
 }

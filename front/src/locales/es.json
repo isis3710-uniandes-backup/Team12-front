@@ -8,6 +8,8 @@
     "lout":"Cerrar sesión",
     "slogan":"Intercambia lo que necesites",
     "searchDefault":"Busca un producto o servicio",
+    "searchBut":" Ir",
+    "cartBut":"Carrito",
     "emptyCart":"Tu carrito de compras está vacío",
     "categoryMenu":"Ver categorías",
     "closeMenu":"Cerrar",
@@ -50,6 +52,8 @@
     "userName":"Nombre completo",
     "userEmail":"Correo electrónico",
     "userPhone":"Número telefónico",
-    "userAdd":"Dirección de residencia"
+    "userAdd":"Dirección de residencia",
+    "addItem":"Agregar al carrito"
+
 
 }

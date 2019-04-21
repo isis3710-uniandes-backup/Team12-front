@@ -37,6 +37,9 @@ export default class Subcategory extends Component{
                 <td>{(item.rating)?item.rating:<FormattedMessage id="noRateTag"/>}</td>
                 <td>{(item.available)?<FormattedMessage id="availableTag"/>:<FormattedMessage id="noAvailableTag"/>}</td>
                 <td>{item.description}</td>
+                <td>
+                  <button type="submit" aria-label="Left Align" style={{backgroundColor:"lightGreen", fontWeight:"bolder"}}>+</button>
+                </td>
               </tr>
             )
           }));
@@ -54,8 +57,8 @@ export default class Subcategory extends Component{
             </h1>
             <hr/>
             <div>
-              <table className = "table">
-                <thead>
+              <table className = "table table-bordered table-responsive" >
+                <thead className ="table-active">
                   <tr>
                   <th>
                       <FormattedMessage id="tItemName"/>
@@ -71,6 +74,9 @@ export default class Subcategory extends Component{
                     </th>
                     <th>
                       <FormattedMessage id="tItemDes"/>
+                    </th>
+                    <th>
+                      <FormattedMessage id="addItem"/>
                     </th>
                   </tr>
                 </thead>

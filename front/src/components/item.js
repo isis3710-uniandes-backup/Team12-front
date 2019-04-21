@@ -6,10 +6,7 @@ import { FormattedMessage } from 'react-intl';
 
 export default class Item extends Component{
     api = new ApiHelper();
-    constructor(props){
-        super(props);
-
-    }
+   
     renderAvailability(){
         if(this.props.data.available === true){
             return (

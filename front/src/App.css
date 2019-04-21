@@ -36,7 +36,8 @@
 
 body{
 	margin:0; 
-	font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: medium;
 	background: #fff;
 }
 body a{ 
@@ -215,7 +216,7 @@ ul.cd-dropdown-content li {
     top: 0px;
     right: 0px;
     width: 60px;
-    height: 50px;
+    height: 57.6px;
     outline: none;
     box-shadow: none;
     background: #f44336;
@@ -248,8 +249,8 @@ ul.cd-dropdown-content li {
 	-o-border-radius: 50%;
 	-ms-border-radius: 50%;
     border-radius: 50%;
-    width: 60px;
-    height: 59px;
+    width: 69px;
+    height: 69px;
     text-align: center;
     outline: none;
 }
@@ -2594,7 +2595,7 @@ ul.faq {
 } 
 .header-search .btn-default { 
     width: 48px;
-    height: 44px; 
+    height: 51.2px; 
 }
 .cart {
     margin-right: 1.5em;
@@ -2815,6 +2816,9 @@ h3.w3ls-title.w3ls-title1 {
 }
 }
 @media(max-width:800px){
+.w3view-cart{
+    font-size: x-small
+}
 .w3ls-header-left,.w3ls-header-right{
     float: none;
     width: 100%;
@@ -3018,6 +3022,12 @@ h3.w3sitemap-title {
 } 
 }
 @media(max-width:640px){
+    body{
+        margin:0; 
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: x-small;
+        background: #fff;
+    }
 .agileits-modal .close2 { 
     padding: .6em 2em; 
 }
@@ -3190,7 +3200,10 @@ h3.w3ls-title.w3ls-title1 {
     margin-top: 1.5em;
 }  
 }
-@media(max-width:600px){ 
+@media(max-width:600px){
+.header-search .btn-default{
+    height: 44.8px;
+} 
 .header-search, .header-two.scroll-to-fixed-fixed .header-search { 
     width: 46%;
 }
@@ -3285,7 +3298,7 @@ h3.w3ls-title.w3ls-title1 {
 }
 .header-search .btn-default, .header-two.scroll-to-fixed-fixed .header-search .btn-default {
     width: 34px;
-    height: 34px;
+    height: 40.6px;
 }
 .w3view-cart i.fa {
     font-size: 1.2em;

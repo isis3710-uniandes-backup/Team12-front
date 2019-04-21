@@ -31,7 +31,7 @@ export default class ApiHelper {
         var current_user = JSON.parse(localStorage.getItem('user'));
         console.log(current_user);
         for (var key in user) {
-            if (user[key] == '') {
+            if (user[key] === '') {
               delete user[key];
             } else if (user[key] !== undefined) {
               current_user[key] = user[key];
