@@ -3,9 +3,12 @@ import {Link, Route} from 'react-router-dom'
 import CrearOferta from './crearOferta'
 import UpdateOferta from './updateOferta'
 import axios from 'axios';
+import ApiHelper from './ApiHelper';
+import {NavLink} from 'react-router-dom';
 
 export class oferta extends Component {
 
+  api = new ApiHelper();
   constructor(props){
     super(props);
     this.state = {
@@ -15,22 +18,25 @@ export class oferta extends Component {
   }
   
   componentDidMount = () => {
-    fetch(`http://localhost:3001/users/${this.state.usuario.id}/ofertas`)
-    .then(response => response.json())
-    .then(ofertas => {
-      ofertas.forEach(oferta => {
-        let data = {
-          id: oferta.id,
-          nombre: oferta.nombre,
-          img: oferta.img,
-          precioAnterior: oferta.precioAnterior,
-          porcentajeDescuento: oferta.porcentajeDescuento,
-          objetosId: oferta.objectId
-        }
-        this.setState({ ofertas: this.state.ofertas.concat([data]) })
+    if(this.api.loggedIn()){
+      fetch(`http://localhost:3001/users/${this.state.usuario.id}/ofertas`)
+      .then(response => response.json())
+      .then(ofertas => {
+        ofertas.forEach(oferta => {
+          let data = {
+            id: oferta.id,
+            nombre: oferta.nombre,
+            img: oferta.img,
+            precioAnterior: oferta.precioAnterior,
+            porcentajeDescuento: oferta.porcentajeDescuento,
+            objetosId: oferta.objectId
+          }
+          this.setState({ ofertas: this.state.ofertas.concat([data]) })
+        })
       })
-    })
-    console.log(this.state.ofertas)
+      console.log(this.state.ofertas)
+    }
+    
   }
 
   delete = (id)=>{
@@ -42,55 +48,65 @@ export class oferta extends Component {
   }
 
   render() { 
-    const {ofertas } = this.state
-    return (
+    if(this.api.loggedIn()){
+      const {ofertas } = this.state
+      return (
 
-      <div>
-        <h1>{this.state.usuario.name} offers</h1>
-        <div className="container">
-              <div className="row">
-          {ofertas.map((oferta,index)=>(
-            <Fragment>
-              <div className="col-auto mb-3">
-              <div className="card" style={{width: "25rem"}}>
-                <div className="card-body">
-                  <h2 className="card-title"> {oferta.nombre} </h2>
-                    <p className="prestamoT" style={{fontSize: "1.8rem"}}>
-                    <img src={oferta.img} width="200px" height="200px" alt={oferta.nombre} />
-                    name: {oferta.nombre} <br></br>
-                    previous price: {"$"+oferta.precioAnterior} {"- "+oferta.porcentajeDescuento+"%"} <br></br>
-                    current price: {"$"+oferta.precioAnterior*(oferta.porcentajeDescuento/100)} <br></br>
-                    <button className="btn btn-danger" style={{fontSize: "1.5rem"}} onClick={()=> this.delete(oferta.id)}>Delete </button>
-                    <Link className="btn btn-warning" to={'/ofertas/update/'+oferta.id} style={{fontSize: "1.5rem"}}>Update </Link>
-                      </p>
-              </div>
-              </div>
-              </div>
-             </Fragment>
-          ))}
-          </div>
-          </div>
-          <Route
-           exact path='/ofertas/create'
-           render = { props => (
-            <CrearOferta>
+        <div>
+          <h1>{this.state.usuario.name} offers</h1>
+          <div className="container">
+                <div className="row">
+            {ofertas.map((oferta,index)=>(
+              <Fragment>
+                <div className="col-auto mb-3">
+                <div className="card" style={{width: "25rem"}}>
+                  <div className="card-body">
+                    <h2 className="card-title"> {oferta.nombre} </h2>
+                      <p className="prestamoT" style={{fontSize: "1.8rem"}}>
+                      <img src={oferta.img} width="200px" height="200px" alt={oferta.nombre} />
+                      name: {oferta.nombre} <br></br>
+                      previous price: {"$"+oferta.precioAnterior} {"- "+oferta.porcentajeDescuento+"%"} <br></br>
+                      current price: {"$"+oferta.precioAnterior*(oferta.porcentajeDescuento/100)} <br></br>
+                      <button className="btn btn-danger" style={{fontSize: "1.5rem"}} onClick={()=> this.delete(oferta.id)}>Delete </button>
+                      <Link className="btn btn-warning" to={'/ofertas/update/'+oferta.id} style={{fontSize: "1.5rem"}}>Update </Link>
+                        </p>
+                </div>
+                </div>
+                </div>
+              </Fragment>
+            ))}
+            </div>
+            </div>
+            <Route
+            exact path='/ofertas/create'
+            render = { props => (
+              <CrearOferta>
 
-            </CrearOferta>
-           )
-           }
-          />
-          <Route
-                    exact path='/ofertas/update/:id' render = { props => (
-                      
-                      <UpdateOferta {...props}>
-            
-                      </UpdateOferta>
-                    )
-                    }
-                    />
-          <Link to='/ofertas/create' style={{fontSize: "1.8rem"}}>Create an offer!</Link>
-      </div>
-    )
+              </CrearOferta>
+            )
+            }
+            />
+            <Route
+                      exact path='/ofertas/update/:id' render = { props => (
+                        
+                        <UpdateOferta {...props}>
+              
+                        </UpdateOferta>
+                      )
+                      }
+                      />
+            <Link to='/ofertas/create' style={{fontSize: "1.8rem"}}>Create an offer!</Link>
+        </div>
+      )
+    }
+    else{
+      return (
+        <div>
+          <p style={{textAlign:"center", fontSize:"3em", color:"black"}}>No estás registrado</p>
+          <p style={{textAlign:"center"}}><NavLink to="/signup">Regístrate ahora</NavLink> para obtener ofertas personalizadas</p>
+        </div>
+      );
+    }
   }
 }
 

@@ -12,7 +12,8 @@ import Prestamo from './components/prestamo';
 import Oferta from './components/oferta';
 import Category from './components/category';
 import Subcategory from './components/subcategory';
-import Item from './components/item'
+import Item from './components/item';
+import CategoryList from './components/categoryList';
 
 class App extends Component {
   /*Para probar lo del carrito puse 
@@ -32,7 +33,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div role = "contentinfo">
         <HashRouter>
             <Header/>
             <Route exact path="/" component={Home} />
@@ -42,9 +43,9 @@ class App extends Component {
             <Route path="/prestamos" component={Prestamo}/>
             <Route path="/ofertas" component={Oferta}/>
             <Route path="/categories/:categoryID" component={Category}/>
+            <Route path="/categories" component={CategoryList}/>
             <Route path="/subcategories/" component={Subcategory}/>
             <Route path="/item/:itemID" component={Item} />
-
             <Footer/>
         </HashRouter>
       </div>

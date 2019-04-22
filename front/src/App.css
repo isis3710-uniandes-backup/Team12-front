@@ -1,3 +1,31 @@
+.item-info{
+    margin-top: 2em;
+    margin-bottom: 0.6em;
+}
+.botones{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.4em
+}
+
+.availablility{
+    color:green;
+    display: block;
+    float: right;
+    font-size: 1.4em;
+
+    text-decoration: underline green
+}
+.non-availablility{
+    color:red;
+    display: block;
+    float: right;
+    font-size: 1.4em;
+    text-decoration: underline red
+}
+
+
 .App {
   text-align: center;
 }
@@ -316,6 +344,9 @@ ul.cd-dropdown-content li {
 }
 /*-- menu --*/
 .cd-dropdown-trigger:hover {
+    color: #000;
+}
+.cd-menu-link:hover{
     color: #000;
 }
 /*-- //menu --*/
@@ -3214,6 +3245,9 @@ h3.w3ls-title.w3ls-title1 {
 .cd-dropdown-trigger { 
     padding: 0 30px 0 0;
 } 
+.cd-menu-link { 
+    padding: 0 30px 0 0;
+} 
 .glry-w3agile-grids .view-caption h5 {
     font-size: 1em;
     margin: 0.5em auto; 
@@ -3967,4 +4001,5 @@ h3.w3ls-title.w3ls-title1 {
     margin: 0.2em;
     font-size: 0.85em;
 }
+
 }

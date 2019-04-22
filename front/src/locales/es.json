@@ -1,5 +1,5 @@
 {
-    "homeScreenHead":"Conoce sobre telopresto",
+    "homeScreenHead":"Bienvenido a telopresto",
     "accountBar":"Mi cuenta",
     "logBar":"Inicia sesión",
     "supBar":"Regístrate",
@@ -53,7 +53,13 @@
     "userEmail":"Correo electrónico",
     "userPhone":"Número telefónico",
     "userAdd":"Dirección de residencia",
-    "addItem":"Agregar al carrito"
-
+    "addItem":"Agregar al carrito",
+    "objDet":"Detalles",
+    "goObjDet":"Ver",
+    "sellerProf":"Ir al perfil del vendedor",
+    "itemInfo":"Información del elemento",
+    "offersListing":"Ver ofertas",
+    "catHeader":"Todas las categorías",
+    "back":"Regresar"
 
 }

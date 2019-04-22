@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { NavLink } from "react-router-dom";
 import {FormattedMessage } from 'react-intl';
 
-import '../App.css';
+//import '../App.css';
 import 'font-awesome/css/font-awesome.min.css';
 import ApiHelper from './ApiHelper';
 
@@ -55,7 +55,7 @@ export default class Header extends Component {
 
     renderCategories() {
         return (
-            <ul className="cd-dropdown-content">
+            <ul >
                 {this.state.categories.map((cat, index) => this.renderCategory(cat, index))}
             </ul>
         );
@@ -106,17 +106,17 @@ export default class Header extends Component {
                     <div className="container">
                         <div className="header-logo">
                             <h1><NavLink to="/"><span>Te</span>lo<i>Presto</i></NavLink></h1>
-                            <h6>
+                            <span>
                                 <FormattedMessage id="slogan"/>
-                            </h6> 
+                            </span> 
                         </div>	
                         <div className="header-search">
-                            <form action="#" method="post">
+                            <form action="javascript:myFunction(); return false;" aria-label="Left Align">
                                 <FormattedMessage id="searchDefault" defaultMessage="Search">
-                                    {placeholder => <input type="search" name="Search" placeholder={placeholder} required/>}
+                                    {placeholder => <input type="search" name="Search" style={{color:"#676767"}} placeholder={placeholder} required aria-label="Left Align"/>}
                                 </FormattedMessage>
                                 <button type="submit" className="btn btn-default" aria-label="Left Align">
-                                    <i className="fa fa-search" aria-hidden="true"> 
+                                    <i className="fa fa-search" aria-hidden="true" style={{color:"black"}}> 
                                         <FormattedMessage id="searchBut"/>
                                      </i>
                                 </button>
@@ -124,10 +124,10 @@ export default class Header extends Component {
                         </div>
                         <div className="header-cart"> 
                             <div className="cart"> 
-                            <form action="#" method="post" className="last"> 
-                                <input type="hidden" name="cmd" defaultValue="_cart" />
+                            <form action="javascript:myFunction(); return false;" > 
+                                <input type="hidden" name="cmd" defaultValue="_cart"  />
                                 <input type="hidden" name="display" defaultValue={1} />
-                                <button className="w3view-cart" type="submit" name="submit" value>
+                                <button className="w3view-cart" type="submit" style={{backgroundColor:"#0170e0"}} name="submit" value>
                                     <i className="fa fa-cart-arrow-down" aria-hidden="true" />
                                     <span style={{color:"white"}}><FormattedMessage id="cartBut"/></span>
                                 </button>
@@ -138,19 +138,21 @@ export default class Header extends Component {
                         <div className="clearfix"> </div>
                     </div>		
                 </div>
-                <div className="header-three">
+                <div className="header-three" style={{backgroundColor:"#0170e0"}}>
                     <div className="container">
                         <div className="menu">
                             <div className="cd-dropdown-wrapper">
-                                <a className="cd-dropdown-trigger" href="javascript:void(0);">
+                                <NavLink className="cd-dropdown-trigger" to = "/categories">
                                     <FormattedMessage id="categoryMenu"/>
-                                </a>
-                                <nav className="cd-dropdown"> 
-                                    <a href="javascript:void(0);" className="cd-close">
-                                        <FormattedMessage id="closeMenu"/>
-                                    </a>
-                                    {this.renderCategories()}
-                                </nav> 
+                                </NavLink>
+                               
+                            </div> 	 
+                        </div>
+                        <div className="menu">
+                            <div className="cd-dropdown-wrapper">
+                                <NavLink id = "of" className="cd-dropdown-trigger" to="/ofertas">
+                                    <FormattedMessage id="offersListing"/>
+                                </NavLink>
                             </div> 	 
                         </div>
                     </div>

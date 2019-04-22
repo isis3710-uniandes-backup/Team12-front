@@ -1,4 +1,4 @@
- 
+
 .cd-dropdown-wrapper {
 	display: inline-block;
 	position: relative; 
@@ -20,37 +20,7 @@
 .no-touch .cd-dropdown-trigger:hover {
   background-color: #171b46;
 }
-.cd-dropdown-trigger::before, .cd-dropdown-trigger::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    margin-top: 0;
-    height: 2px;
-    width: 9px;
-    background: #fff;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transition: width 0.3s, -webkit-transform 0.3s;
-    -moz-transition: width 0.3s, -moz-transform 0.3s;
-    transition: width 0.3s, transform 0.3s;
-}
 
-.cd-dropdown-trigger::before {
-  right: 22px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-.cd-dropdown-trigger::after {
-  right: 17px;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
 .cd-dropdown-content a:hover {
     color: #008654;
 }
