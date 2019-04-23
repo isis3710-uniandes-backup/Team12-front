@@ -27,12 +27,12 @@ export class prestamo extends Component {
             paymentId: prestamo.paymentId,
             objectId: prestamo.objectId,
             startDate: prestamo.startDate,
-            endDate: prestamo.endDate
+            endDate: prestamo.endDate,
+            valor: prestamo.valor
           }
           this.setState({ prestamos: this.state.prestamos.concat([data]) })
         })
       })
-    console.log(this.state.prestamos)
   }
 
   delete = (id) => {
@@ -40,6 +40,29 @@ export class prestamo extends Component {
     axios.delete(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/` + id)
       .then(res => {
         this.setState({ prestamos: [...this.state.prestamos.filter(prestamo => prestamo.id !== id)] })
+      })
+  }
+
+  delete2 = (prestamo) => {
+    console.log("fdfdsfdf")
+    console.log(prestamo)
+    prestamo.paymentId = (Math.random() * 10000000000) + 200;
+    console.log(prestamo)
+    console.log(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/` + prestamo.id)
+    axios.put(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/` + prestamo.id, prestamo)
+      .then(res => {
+
+        this.setState({ prestamos: prestamo })
+      })
+  }
+
+  payment = (id) => {
+    console.log("dsdasfgdsg")
+    axios.put(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/` + id)
+      .then(res => {
+        var prestamo = this.state.prestamos.filter(prestamo => prestamo.id === id)[0];
+        prestamo.paymentId = (Math.random() * 10000000000) + 200;
+        this.setState({ prestamos: prestamo })
       })
   }
 
@@ -58,12 +81,15 @@ export class prestamo extends Component {
                     <div className="card-body">
                       <h2 className="card-title">Loan {prestamo.id} </h2>
                       <p className="prestamoT" style={{ fontSize: "1.8rem" }}>
-                        paymentId: {prestamo.paymentId} <br></br>
+                        paymentId: {prestamo.paymentId ? prestamo.paymentId : "-----"} <br></br>
                         objectId: {prestamo.objectId} <br></br>
                         Start Date: {prestamo.startDate} <br></br>
                         End Date: {prestamo.endDate} <br></br>
+                        Value: {"$" + prestamo.valor} <br></br>
                         <button className="btn btn-danger" style={{ fontSize: "1.5rem" }} onClick={() => this.delete(prestamo.id)}>Delete </button>
+                        <button className="btn btn-danger" style={{ fontSize: "1.5rem" }} onClick={() => this.delete2(prestamo)}>Delete </button>
                         <Link className="btn btn-warning" to={'/prestamos/update/' + prestamo.id} style={{ fontSize: "1.5rem" }}>Update </Link>
+                        <button className="btn btn-info" style={{ fontSize: "1.5rem" }} onCLick={() => this.payment(prestamo.id)}>Pagar </button>
                       </p>
                     </div>
                   </div>

@@ -8,8 +8,8 @@ export class crearPrestamo extends Component {
     this.state = {
       objectId: "",
       userId: "",
-      startDate: "22/04/2019",
-      endDate: "22/04/2019",
+      startDate: {},
+      endDate: {},
       usuario: JSON.parse(localStorage.getItem("user")),
       prestamo: {},
       route: (navigator.language.startsWith("es")) ? 'http://localhost:3001/objetos' : "http://localhost:3001/objetos-en/",
@@ -19,6 +19,8 @@ export class crearPrestamo extends Component {
   }
 
   componentDidMount() {
+    console.log("object")
+    console.log(this.state.usuario.id)
     fetch(this.state.route).then(
       response => response.json()
     ).then(
@@ -35,7 +37,7 @@ export class crearPrestamo extends Component {
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value })
-    console.log("Id obejto" + this.state.objectId)
+    console.log(e.target.value)
   };
 
   crear = (prestamo) => {
@@ -44,25 +46,25 @@ export class crearPrestamo extends Component {
   }
 
   render() {
-    const { items } = this.state
+    const { items, objectId } = this.state
     return (
       <div>
         <div className="container">
           <h2>Create a loan</h2>
-          <form onSubmit={() => this.crear({ paymentId: (Math.random() * 10000000000) + 200, objectId: this.state.objectId, userId: this.state.usuario.id, startDate: this.state.startDate, endDate: this.state.endDate })}>
+          <form onSubmit={() => this.crear({ objectId: this.state.objectId, userId: this.state.usuario.id, startDate: this.state.startDate, endDate: this.state.endDate, valor: items.filter((item => item.id === objectId))[0].price })}>
             <div className="form-group">
               <label htmlFor="objectId">Object id: </label>
               {items.map((item, index) => (
-                <p className="mat"><input value={item.id} type="radio" name="objectId" id="objectId" onChange={this.onChange} />{item.name}</p>
+                <p key={index} className="mat"><input value={item.id} type="radio" name="objectId" id="objectId" onChange={this.onChange} />{item.name}</p>
               ))}
             </div>
             <div className="form-group">
               <label htmlFor="startDate">Start Date: </label>
-              <input name="startDate" value={this.state.startDate} className="form-control" id="startDate" placeholder="dd/mm/aa" onChange={this.onChange} />
+              <input type="date" name="startDate" value={this.state.startDate} className="form-control" id="startDate" onChange={this.onChange} />
             </div>
             <div className="form-group">
               <label htmlFor="endDate">End Date: </label>
-              <input name="endDate" value={this.state.endDate} className="form-control" id="endDate" placeholder="dd/mm/aa" onChange={this.onChange} />
+              <input type="date" name="endDate" value={this.state.endDate} className="form-control" id="endDate" onChange={this.onChange} />
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
           </form>
