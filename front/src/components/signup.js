@@ -64,6 +64,7 @@ export default class SignUp extends Component {
                 }
                 localStorage.setItem("user", JSON.stringify(res.data));
                 this.props.history.push("/");
+                window.location.reload();
             })
             .catch(error => {
                 alert(error);
