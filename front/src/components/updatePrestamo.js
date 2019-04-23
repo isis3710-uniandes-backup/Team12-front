@@ -1,33 +1,34 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { FormattedMessage } from 'react-intl';
 
 export class crearPrestamo extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      startDate : "",
+      startDate: "",
       endDate: "",
       usuario: JSON.parse(localStorage.getItem("user")),
-      prestamo: {}, 
-      id:""
+      prestamo: {},
+      id: ""
+    }
   }
-}
 
-componentDidMount = () => {
-  axios.get(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/${this.props.match.params.id}`)
-  .then( res => {
-      this.setState({startDate: res.data.startDate, endDate: res.data.endDate, id: res.data.id})
-  })
-}
+  componentDidMount = () => {
+    axios.get(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/${this.props.match.params.id}`)
+      .then(res => {
+        this.setState({ startDate: res.data.startDate, endDate: res.data.endDate, id: res.data.id })
+      })
+  }
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
-  
-  update = (prestamo)=> {
+
+  update = (prestamo) => {
     console.log(prestamo)
-      axios.put(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/${this.state.id}`, prestamo)
-      .then(res =>{
-          console.log(res.data)
+    axios.put(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/${this.state.id}`, prestamo)
+      .then(res => {
+        console.log(res.data)
       })
   }
 
@@ -35,20 +36,20 @@ componentDidMount = () => {
     console.log(this.state.usuario.id)
     return (
       <div>
-      <div className="container">
-      <h2>Update a loan</h2>
-      
-       <form onSubmit={()=>this.update({ id: this.state.id, startDate: this.state.startDate, endDate: this.state.endDate})}>
-        <div className="form-group">
-            <label htmlFor="startDate">Start Date: </label>
-            <input name="startDate" value={this.state.startDate} className="form-control" id="startDate" placeholder="dd/mm/aa" onChange={this.onChange}/>
-        </div>
-        <div className="form-group">
-            <label htmlFor="endDate">End Date: </label>
-            <input name="endDate" value={this.state.endDate} className="form-control" id="endDate" placeholder="dd/mm/aa" onChange={this.onChange}/>
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-        </form> 
+        <div className="container">
+          <h2><FormattedMessage id="prestamos.update" /><span>{" "}</span><FormattedMessage id="prestamo" /></h2>
+
+          <form onSubmit={() => this.update({ id: this.state.id, startDate: this.state.startDate, endDate: this.state.endDate })}>
+            <div className="form-group">
+              <label htmlFor="startDate"><FormattedMessage id="prestamos.sd" /> </label>
+              <input name="startDate" value={this.state.startDate} className="form-control" id="startDate" type="date" onChange={this.onChange} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="endDate"><FormattedMessage id="prestamos.ed" /> </label>
+              <input name="endDate" value={this.state.endDate} className="form-control" id="endDate" type="date" onChange={this.onChange} />
+            </div>
+            <button type="submit" className="btn btn-primary"><FormattedMessage id="prestamos.submit" /></button>
+          </form>
         </div>
       </div>
     )
@@ -56,4 +57,3 @@ componentDidMount = () => {
 }
 
 export default crearPrestamo
- 

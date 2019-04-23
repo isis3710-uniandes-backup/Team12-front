@@ -69,5 +69,17 @@
     "catPicker": "Choose a category",
     "subcatPicker": "Choose a subcategory",
     "submitNewObj": "Done",
-    "prestamos": "Loans"
+    "prestamos": "Loans",
+    "prestamo": "Loan",
+    "prestamos.delete": "Delete",
+    "prestamos.update": "Update",
+    "prestamos.pay": "Pay",
+    "prestamos.value": "Value:",
+    "prestamos.sd": "Start Date:",
+    "prestamos.ed": "End Date:",
+    "prestamos.pid": "Payment Id:",
+    "prestamos.oid": "Object Id:",
+    "prestamos.submit": "Submit",
+    "prestamos.create": "Create a Loan!",
+    "prestamos.objetos": "Objects:"
 }

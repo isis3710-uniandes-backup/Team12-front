@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { FormattedMessage } from 'react-intl';
 
 export class crearPrestamo extends Component {
 
@@ -50,23 +51,23 @@ export class crearPrestamo extends Component {
     return (
       <div>
         <div className="container">
-          <h2>Create a loan</h2>
+          <h2><FormattedMessage id="prestamos.create" /></h2>
           <form onSubmit={() => this.crear({ objectId: this.state.objectId, userId: this.state.usuario.id, startDate: this.state.startDate, endDate: this.state.endDate, valor: items.filter((item => item.id === objectId))[0].price })}>
             <div className="form-group">
-              <label htmlFor="objectId">Object id: </label>
+              <label htmlFor="objectId"><FormattedMessage id="prestamos.objetos" /> </label>
               {items.map((item, index) => (
                 <p key={index} className="mat"><input value={item.id} type="radio" name="objectId" id="objectId" onChange={this.onChange} />{item.name}</p>
               ))}
             </div>
             <div className="form-group">
-              <label htmlFor="startDate">Start Date: </label>
+              <label htmlFor="startDate"><FormattedMessage id="prestamos.sd" /> </label>
               <input type="date" name="startDate" value={this.state.startDate} className="form-control" id="startDate" onChange={this.onChange} />
             </div>
             <div className="form-group">
-              <label htmlFor="endDate">End Date: </label>
+              <label htmlFor="endDate"><FormattedMessage id="prestamos.ed" /> </label>
               <input type="date" name="endDate" value={this.state.endDate} className="form-control" id="endDate" onChange={this.onChange} />
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary"><FormattedMessage id="prestamos.submit" /></button>
           </form>
         </div>
       </div>

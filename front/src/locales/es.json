@@ -69,5 +69,17 @@
     "catPicker": "Elegir categoría correspondiente",
     "subcatPicker": "Elegir subcategoría correspondiente",
     "submitNewObj": "Listo",
-    "prestamos": "Prestamos"
+    "prestamos": "Prestamos",
+    "prestamo": "Prestamo",
+    "prestamos.delete": "Borrar",
+    "prestamos.update": "Actualizar",
+    "prestamos.pay": "Pagar",
+    "prestamos.value": "Valor:",
+    "prestamos.sd": "Fecha Inicial:",
+    "prestamos.ed": "Fecha Final:",
+    "prestamos.pid": "Id de Pago:",
+    "prestamos.oid": "Id del Objeto:",
+    "prestamos.submit": "Enviar",
+    "prestamos.create": "Crear un Prestamo!",
+    "prestamos.objetos": "Objetos:"
 }
