@@ -81,5 +81,10 @@
     "prestamos.oid": "Object Id:",
     "prestamos.submit": "Submit",
     "prestamos.create": "Create a Loan!",
-    "prestamos.objetos": "Objects:"
+    "prestamos.objetos": "Objects:",
+    "ofertas.currp": "Current Price",
+    "ofertas.prevp": "Previous Price",
+    "ofertas": "Offers",
+    "oferta": "Offer",
+    "ofertas.create": "Create an Offer!"
 }
