@@ -14,6 +14,7 @@ import Category from './components/category';
 import Subcategory from './components/subcategory';
 import Item from './components/item';
 import CategoryList from './components/categoryList';
+import Vender from './components/nuevoObjeto';
 
 class App extends Component {
   /*Para probar lo del carrito puse 
@@ -33,7 +34,7 @@ class App extends Component {
 
   render() {
     return (
-      <div role = "contentinfo">
+      <div role = "main">
         <HashRouter>
             <Header/>
             <Route exact path="/" component={Home} />
@@ -46,6 +47,7 @@ class App extends Component {
             <Route path="/categories" component={CategoryList}/>
             <Route path="/subcategories/" component={Subcategory}/>
             <Route path="/item/:itemID" component={Item} />
+            <Route path="/vender" component={Vender} />
             <Footer/>
         </HashRouter>
       </div>

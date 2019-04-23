@@ -138,7 +138,7 @@ export default class Header extends Component {
                         <div className="clearfix"> </div>
                     </div>		
                 </div>
-                <div className="header-three" style={{backgroundColor:"#0170e0"}}>
+                <div className="header-three" >
                     <div className="container">
                         <div className="menu">
                             <div className="cd-dropdown-wrapper">
@@ -150,8 +150,15 @@ export default class Header extends Component {
                         </div>
                         <div className="menu">
                             <div className="cd-dropdown-wrapper">
-                                <NavLink id = "of" className="cd-dropdown-trigger" to="/ofertas">
+                                <NavLink  className="cd-dropdown-trigger" to="/ofertas">
                                     <FormattedMessage id="offersListing"/>
+                                </NavLink>
+                            </div> 	 
+                        </div>
+                        <div className="menu" style={{display: this.api.loggedIn() ? 'block' : 'none'}}>
+                            <div className="cd-dropdown-wrapper">
+                                <NavLink className="cd-dropdown-trigger" to="/vender">
+                                    <FormattedMessage id="sellAct"/>
                                 </NavLink>
                             </div> 	 
                         </div>

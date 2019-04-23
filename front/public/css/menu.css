@@ -10,15 +10,15 @@
     display: block;
     position: relative;
     padding: 0 36px 0 20px;
-    color: #fff;
+    color: #000;
     font-family: 'Offside', cursive;
-	font-size: 1.3em;
+	font-size: 1em;
 	line-height: 50px;
 	outline:none;
 	text-decoration:none;
 }
 .no-touch .cd-dropdown-trigger:hover {
-  background-color: #171b46;
+  background-color: #fff;
 }
 
 .cd-dropdown-content a:hover {

@@ -30,18 +30,20 @@ export default class CategoryList extends Component{
             var arr = cat.subcategories;
             var lista = (typeof (arr) != undefined && arr !=null && (Array.isArray(arr) && arr.length) )?(
                 <li  key = {index} style={{fontSize:"22px"}} >
-                    <NavLink to={`/categories/${cat.id}`}>{cat.name}</NavLink>
+                    <NavLink to={`/categories/${cat.id}`} style={{color:"#0170e0"}}>{cat.name}</NavLink>
                     <ul style={{listStyleType:"none"}}>
                         {cat.subcategories.map((subcat, index) => (
                             <li key = {index} style={{fontSize:"15px", paddingLeft:"2em"}}>
-                                <NavLink to= {`/categories/${cat.id}/subcategories/${subcat.id}`}>{subcat.name}</NavLink>
+                                <NavLink to= {`/categories/${cat.id}/subcategories/${subcat.id}`} style={{color:"#0170e0"}}>
+                                    {subcat.name}
+                                </NavLink>
                             </li>
                         ))}
                     </ul>
                 </li>
             ):(
                 <li key = {index} style={{fontSize:"22px"}}>
-                    <NavLink to = {`/categories/${cat.id}`}>{cat.name}</NavLink>
+                    <NavLink to = {`/categories/${cat.id}`} style={{color:"#0170e0"}}>{cat.name}</NavLink>
                 </li>
             );
         return lista;

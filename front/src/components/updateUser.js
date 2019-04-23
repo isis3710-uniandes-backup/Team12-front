@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import '../App.css';
 import ApiHelper from './ApiHelper';
+import { FormattedMessage } from 'react-intl';
 
 export default class updateUser extends Component {
 
@@ -81,23 +82,25 @@ export default class updateUser extends Component {
         return (
             <div className="login-page">
               <div className="container"> 
-                <h3 className="w3ls-title w3ls-title1">Update your data</h3>  
+                <h1 className="w3ls-title w3ls-title1">
+                    <FormattedMessage id="updateData"/>
+                </h1>  
                 <div className="login-body">
-                  <form onSubmit={this.handleSubmit}>
-                    <input type="text" className="user" name="name" placeholder="Enter your Name" value={this.state.name} onChange={this.handleInputChange} required />
-                    <input type="text" className="user" name="lastname" placeholder="Enter your Lastname" value={this.state.lastname} onChange={this.handleInputChange} required />
-                    <input type="text" className="user" name="dni" placeholder="Enter your DNI" value={this.state.dni} onChange={this.handleInputChange} required />
-                    <input type="text" className="user" name="age" placeholder="Enter your Age" value={this.state.age} onChange={this.handleInputChange} required />
-                    <input type="text" className="user" name="phone" placeholder="Enter your Phone" value={this.state.phone} onChange={this.handleInputChange} required />
-                    <input type="text" className="user" name="address" placeholder="Enter your Address" value={this.state.address} onChange={this.handleInputChange} required />
-                    <select className="selectpicker form-control" name="city_id" value={this.state.city_id} onChange={this.handleInputChange}>
+                  <form onSubmit={this.handleSubmit} aria-label="Left Align">
+                    <input type="text" className="user" name="name" placeholder="Enter your Name" value={this.state.name} onChange={this.handleInputChange} required aria-label="Left Align"/>
+                    <input type="text" className="user" name="lastname" placeholder="Enter your Lastname" value={this.state.lastname} onChange={this.handleInputChange} required aria-label="Left Align"/>
+                    <input type="text" className="user" name="dni" placeholder="Enter your DNI" value={this.state.dni} onChange={this.handleInputChange} required aria-label="Left Align"/>
+                    <input type="text" className="user" name="age" placeholder="Enter your Age" value={this.state.age} onChange={this.handleInputChange} required aria-label="Left Align"/>
+                    <input type="text" className="user" name="phone" placeholder="Enter your Phone" value={this.state.phone} onChange={this.handleInputChange} required aria-label="Left Align"/>
+                    <input type="text" className="user" name="address" placeholder="Enter your Address" value={this.state.address} onChange={this.handleInputChange} required aria-label="Left Align"/>
+                    <select className="selectpicker form-control" name="city_id" value={this.state.city_id} onChange={this.handleInputChange} aria-label="Left Align">
                         <option value="-1">Select your city</option>
                         {this.state.cities.map((city, index) => <option key={index} value={city.id}>{city.name}</option>)}
                     </select>
                     <hr/>
-                    <input type="text" className="user" name="email" placeholder="Enter your email" value={this.state.email} onChange={this.handleInputChange} required disabled/>
-                    <input type="password" name="password" className="lock" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} required/>
-                    <input type="submit" defaultValue="Update data!" />
+                    <input type="text" className="user" name="email" placeholder="Enter your email" value={this.state.email} onChange={this.handleInputChange} required disabled aria-label="Left Align"/>
+                    <input type="password" name="password" className="lock" placeholder="Password" value={this.state.password} onChange={this.handleInputChange} required aria-label="Left Align"/>
+                    <input type="submit" defaultValue="Update data!" aria-label="Left Align"/>
                   </form>
                 </div>  
               </div>

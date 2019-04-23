@@ -58,20 +58,20 @@ export class oferta extends Component {
                 <div className="row">
             {ofertas.map((oferta,index)=>(
               <Fragment>
-                <div className="col-auto mb-3">
-                <div className="card" style={{width: "25rem"}}>
-                  <div className="card-body">
-                    <h2 className="card-title"> {oferta.nombre} </h2>
-                      <p className="prestamoT" style={{fontSize: "1.8rem"}}>
-                      <img src={oferta.img} width="200px" height="200px" alt={oferta.nombre} />
-                      name: {oferta.nombre} <br></br>
-                      previous price: {"$"+oferta.precioAnterior} {"- "+oferta.porcentajeDescuento+"%"} <br></br>
-                      current price: {"$"+oferta.precioAnterior*(oferta.porcentajeDescuento/100)} <br></br>
-                      <button className="btn btn-danger" style={{fontSize: "1.5rem"}} onClick={()=> this.delete(oferta.id)}>Delete </button>
-                      <Link className="btn btn-warning" to={'/ofertas/update/'+oferta.id} style={{fontSize: "1.5rem"}}>Update </Link>
-                        </p>
-                </div>
-                </div>
+                <div key={index} className="col-auto mb-3">
+                  <div className="card" style={{width: "25rem"}}>
+                    <div className="card-body">
+                      <h2 className="card-title"> {oferta.nombre} </h2>
+                        <p className="prestamoT" style={{fontSize: "1.8rem"}}>
+                        <img src={oferta.img} width="200px" height="200px" alt={oferta.nombre} />
+                        name: {oferta.nombre} <br></br>
+                        previous price: {"$"+oferta.precioAnterior} {"- "+oferta.porcentajeDescuento+"%"} <br></br>
+                        current price: {"$"+oferta.precioAnterior*(oferta.porcentajeDescuento/100)} <br></br>
+                        <button className="btn btn-danger" style={{fontSize: "1.5rem"}} onClick={()=> this.delete(oferta.id)}>Delete </button>
+                        <Link className="btn btn-warning" to={'/ofertas/update/'+oferta.id} style={{fontSize: "1.5rem"}}>Update </Link>
+                          </p>
+                    </div>
+                  </div>
                 </div>
               </Fragment>
             ))}

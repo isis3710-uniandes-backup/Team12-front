@@ -60,6 +60,13 @@
     "itemInfo":"Item information",
     "offersListing":"All offers",
     "catHeader":"All categories",
-    "back":"Go back"
-
+    "back":"Go back",
+    "sellAct":"Offer a product",
+    "updateData":"Update your data",
+    "prodNameHint":"Product name",
+    "prodPriceHint":"Product price",
+    "prodDescHint":"Description",
+    "catPicker":"Choose a category",
+    "subcatPicker":"Choose a subcategory",
+    "submitNewObj":"Done"
 }

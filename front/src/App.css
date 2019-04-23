@@ -24,7 +24,9 @@
     font-size: 1.4em;
     text-decoration: underline red
 }
-
+.login-body input{
+    color:#676767 
+}
 
 .App {
   text-align: center;
@@ -128,7 +130,6 @@ ul.cd-dropdown-content li {
 	outline:none;
 }
 .w3ls-header-right ul li a.dropdown-toggle:hover,li.dropdown.head-dpdn.open a.dropdown-toggle,.my-account a:hover,.my-account a:hover i.fa{
-    color: #fd776d;
 	text-decoration:none;
 } 
 .w3ls-header-right ul li a i.fa {
@@ -138,7 +139,7 @@ ul.cd-dropdown-content li {
     margin-left: 6px; 
 }
 .dropdown-menu > li > a { 
-    color: #999; 
+    color: #676767; 
 }
 .dropdown-menu > li > a:hover {
     color: #fff;
@@ -314,7 +315,7 @@ ul.cd-dropdown-content li {
 /*-- header-three --*/ 
 .header-three {
     border-bottom: 1px solid #eaeaea; 
-    background: url(/images/bg.png)#08bce4 no-repeat;
+    background-color:#007bff;
     background-size: cover;  
 }
 /*-- //header-three --*/
@@ -354,7 +355,7 @@ ul.cd-dropdown-content li {
 .welcome,.deals,.card-page,.help,.values,.privacy,.sitemap,.products,.related-products,.login-page,.contact,.about,.faq-w3agile,.wthree-offers,.w3l-services{
 	padding:5em 0;
 } 
-h3.w3ls-title {
+h1.w3ls-title {
     text-align: left;
     font-size: 2em;
     color: #000;
@@ -1554,7 +1555,7 @@ input#amount {
     font-size: 1em;
     padding: 0.9em 1em;
     width: 100%;
-    color: #999;
+    color: #676767 ;
     outline: none;
     border: 1px solid #E2DCDC;
     background: #FFFFFF;
@@ -1567,14 +1568,14 @@ input#amount {
 	-webkit-appearance:none;
 }
 .login-page input[type="text"]:focus, .login-page input[type="password"]:focus{
-	border-color:#0280e1;	
+	border-color:#0170e0;	
 }
 .login-page input[type="submit"] {
     border: none;
     outline: none;
     cursor: pointer;
     color: #fff;
-    background: #0280e1;
+    background: #0170e0;
     width: 100%;
     padding: .8em 1em;
     font-size: 1em;
@@ -1631,7 +1632,7 @@ input#amount {
 }
 /*-- //login-page --*/
 /*-- offers-page --*/
-h3.w3ls-title.w3ls-title1 {
+h1.w3ls-title.w3ls-title1 {
     text-align: center;
     margin: 0 0 1.5em;
 	font-size: 2.5em;
@@ -1928,7 +1929,7 @@ h3.w3ls-title.w3ls-title1 {
     color: #999;
     margin-top: 1em;
 }
-.history h3.w3ls-title {
+.history h1.w3ls-title {
     font-size: 1.8em;
     margin: 2em 0 0.5em;
 }
@@ -2480,7 +2481,7 @@ p.sbmincart-empty-text {
 .soon h3 { 
     font-size: 2.6em; 
 }
-h3.w3ls-title { 
+h1.w3ls-title { 
     font-size: 1.8em; 
     margin: 0.8em 0; 
 }
@@ -2531,7 +2532,7 @@ p.single-price-text {
     width: 50%;
     padding: 2.5em;
 }
-h3.w3ls-title.w3ls-title1 { 
+h1.w3ls-title.w3ls-title1 { 
     margin: 0 0 1.2em;
     font-size: 2.2em;
 }
@@ -2561,7 +2562,7 @@ h3.w3ls-title.w3ls-title1 {
 .card-top-grids h4 span { 
     font-size: 1.3em; 
 }
-.history h3.w3ls-title { 
+.history h1.w3ls-title { 
     margin: 1.5em 0 0.5em;
 }
 .services-grids h4, .about-text-grids h4 {
@@ -2761,7 +2762,7 @@ h4.clrchg {
 .offer-bottom-grids-info {
     margin-top: 1em;
 }
-h3.w3ls-title.w3ls-title1 { 
+h1.w3ls-title.w3ls-title1 { 
     font-size: 2em;
 }
 .contact iframe { 
@@ -2917,7 +2918,7 @@ nav.sitemap-tabs.affix div#myNavbar {
     font-size: 1.1em; 
     margin-top: 0.5em; 
 }
-h3.w3ls-title {
+h1.w3ls-title {
     font-size: 1.6em; 
 }
 .soon h3 {
@@ -3109,7 +3110,7 @@ h3.w3sitemap-title {
 .nav-tabs li a h5 {
     font-size: 1em; 
 }
-h3.w3ls-title {
+h1.w3ls-title {
     font-size: 1.4em;
 }  
 .copy-right { 
@@ -3170,7 +3171,7 @@ h3.w3ls-title {
     font-size: 1.1em; 
     margin: 0.4em 0; 
 }
-h3.w3ls-title.w3ls-title1 {
+h1.w3ls-title.w3ls-title1 {
     font-size: 1.8em;
 } 
 .header-two.scroll-to-fixed-fixed .header-cart {
@@ -3185,7 +3186,7 @@ h3.w3ls-title.w3ls-title1 {
 .services-grids h4, .about-text-grids h4 {
     font-size: 1em;
 }
-.history h3.w3ls-title {
+.history h1.w3ls-title {
     font-size: 1.5em; 
 }
 .product-grids { 
@@ -3467,7 +3468,7 @@ h3.w3ls-title.w3ls-title1 {
     width: 80%;
     padding: 1.5em;
 }
-h3.w3ls-title.w3ls-title1 {
+h1.w3ls-title.w3ls-title1 {
     font-size: 1.6em;
     margin: 0 0 1em;
 }
@@ -3558,7 +3559,7 @@ h3.w3sitemap-title {
 .sitemap-text-grids { 
     width: 50%;
 }
-h3.w3ls-title.w3ls-title1 {
+h1.w3ls-title.w3ls-title1 {
     font-size: 1.4em; 
 }
 .faq-w3agile .faq li {
@@ -3737,7 +3738,7 @@ ul.dropdown-menu {
 .header-search, .header-two.scroll-to-fixed-fixed .header-search {
     margin: 1.2em 0em 1.2em .5em;
 }
-h3.w3ls-title {
+h1.w3ls-title {
     font-size: 1.2em;
     margin: 0.6em 0;
 }
@@ -3794,7 +3795,7 @@ h3.w3ls-title {
 .copy-right {
     padding: 1em 0;
 }
-.history h3.w3ls-title {
+.history h1.w3ls-title {
     margin: 1em 0 0.5em;
 } 
 .product-top {
@@ -3871,7 +3872,7 @@ h3.w3ls-title {
 .ftr-top-left.about-text-grids i.fa { 
     margin-top: 0.5em;
 }
-.history h3.w3ls-title {
+.history h1.w3ls-title {
     font-size: 1.3em;
 }
 .privacy-w3row h5 { 
@@ -3961,7 +3962,7 @@ h3.w3ls-title {
 .w3ls-header-right ul.dropdown-menu {
     left: -8px;
 }
-h3.w3ls-title.w3ls-title1 {
+h1.w3ls-title.w3ls-title1 {
     font-size: 1.3em;
 }
 .w3ls-add-grids.w3agile-add-products { 

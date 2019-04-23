@@ -60,6 +60,13 @@
     "itemInfo":"Información del elemento",
     "offersListing":"Ver ofertas",
     "catHeader":"Todas las categorías",
-    "back":"Regresar"
-
+    "back":"Regresar",
+    "sellAct":"Ofrecer un producto",
+    "updateData":"Actualiza tus datos",
+    "prodNameHint":"Nombre del producto",
+    "prodPriceHint":"Precio que cobrarás",
+    "prodDescHint":"Descripción del objeto",
+    "catPicker":"Elegir categoría correspondiente",
+    "subcatPicker":"Elegir subcategoría correspondiente",
+    "submitNewObj":"Listo"
 }

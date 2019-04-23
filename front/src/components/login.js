@@ -57,18 +57,18 @@ export default class Login extends Component {
                         <FormattedMessage id="logScreenHead"/>
                     </h3>  
                     <div className="login-body">
-                        <form onSubmit={this.handleSubmit}>
+                        <form onSubmit={this.handleSubmit} aria-label="Left Align">
                             <FormattedMessage id="emailHint" defaultMessage="Email">
                                 {placeholder =>
-                                 <input type="text" className="user" name="email" placeholder={placeholder} value={this.state.email} onChange={this.handleInputChange} required/>}
+                                 <input type="text" className="user" name="email" placeholder={placeholder} value={this.state.email} onChange={this.handleInputChange} required aria-label="Left Align"/>}
                             </FormattedMessage>
                             <FormattedMessage id="pwHint" defaultMessage="Password">
                                 {placeholder =>
-                                 <input type="password" name="password" className="lock" placeholder={placeholder} value={this.state.password} onChange={this.handleInputChange} required/>}
+                                 <input type="password" name="password" className="lock" placeholder={placeholder} value={this.state.password} onChange={this.handleInputChange} required aria-label="Left Align"/>}
                             </FormattedMessage>
                             <FormattedMessage id="submitLogin" defaultMessage="Login">
                                 {placeholder => 
-                                 <input type="submit" value={placeholder}/>}
+                                 <input type="submit"  value={placeholder} aria-label="Left Align"/>}
                             </FormattedMessage>
                             <div className="forgot-grid">
                                 <div className="forgot">
