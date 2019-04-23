@@ -18,7 +18,6 @@ export default class Vender extends Component{
             name: '',
             price:'',
             categoryID:'',
-            subcategoryID:'',
             description:'',
             userID: user.id,
             categories: [],
@@ -54,6 +53,7 @@ export default class Vender extends Component{
     handleSubmit(event) {
         event.preventDefault();
         done=true;
+        this.props.history.push("/");
 
         /*this.api.updateUser(this.state.userID, {
             "name": this.state.name,
@@ -110,7 +110,7 @@ export default class Vender extends Component{
                         }
                     </FormattedMessage>
                     
-                    <select className="selectpicker form-control" name="cat_id" value={this.state.categoryID} onChange={this.handleInputChange} aria-label="Left Align">
+                    <select className="selectpicker form-control" name="categoryID" value={this.state.categoryID} onChange={this.handleInputChange} aria-label="Left Align">
                         <FormattedMessage id="catPicker" defaultMessage="Categories">
                             {cityH =>
                             <option value="-1">

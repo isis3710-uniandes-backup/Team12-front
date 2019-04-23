@@ -117,13 +117,15 @@ export default class SignUp extends Component {
                     </FormattedMessage>
                     
                     <select className="selectpicker form-control" name="city_id" value={this.state.city_id} onChange={this.handleInputChange}>
-                        <FormattedMessage id="cityHint" defaultMessage="City">
                             {cityH =>
                             <option value="-1">
-                                {cityH}
+                                <FormattedMessage id="cityHint" defaultMessage="City">
+
+                                    {cityH}
+                                </FormattedMessage>
                             </option>
                             }
-                        </FormattedMessage>
+                        
                         {this.state.cities.map((city, index) => <option key={index} value={city.id}>{city.name}</option>)}
                     </select>
                     <hr/>
