@@ -47,13 +47,22 @@ export class prestamo extends Component {
   delete2 = (prestamo) => {
     console.log("fdfdsfdf")
     console.log(prestamo)
-    prestamo.paymentId = (Math.random() * 10000000000) + 200;
-    console.log(prestamo)
-    console.log(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/` + prestamo.id)
-    axios.put(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/` + prestamo.id, prestamo)
-      .then(res => {
+    prestamo.paymentId = "" + ((Math.random() * 10000) + 200).toFixed(0);
+    var newprestamo = {
+      endDate: prestamo.endDate,
+      objectId: prestamo.objectId,
+      paymentId: prestamo.paymentId,
+      startDate: prestamo.startDate,
+      valor: prestamo.valor
 
-        this.setState({ prestamos: prestamo })
+    }
+    console.log(newprestamo)
+    const { prestamos } = this.state
+    console.log(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/` + prestamo.id)
+    axios.put(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/` + prestamo.id, newprestamo)
+      .then(res => {
+        this.setState({ prestamos: [...prestamos.splice(prestamos.indexOf(prestamos.find(p => p.id === prestamo.id)), 1, res.data)] })
+        window.location.reload()
       })
   }
 
@@ -68,7 +77,7 @@ export class prestamo extends Component {
             {prestamos.map((prestamo, index) => (
               <Fragment>
                 <div className="col-auto mb-3">
-                  <div className="card" style={{ width: "25rem" }}>
+                  <div className="card" style={{ width: "25rem", borderColor: prestamo.paymentId ? "green" : "red" }}>
                     <div className="card-body">
                       <h2 className="card-title"><FormattedMessage id="prestamo" /> {prestamo.id} </h2>
                       <p className="prestamoT" style={{ fontSize: "1.8rem" }}>
@@ -78,7 +87,7 @@ export class prestamo extends Component {
                         <FormattedMessage id="prestamos.ed" /> {prestamo.endDate} <br></br>
                         <FormattedMessage id="prestamos.value" /> {"$" + prestamo.valor} <br></br>
                         <button className="btn btn-danger" style={{ fontSize: "1.5rem" }} onClick={() => this.delete(prestamo.id)}><FormattedMessage id="prestamos.delete" /></button>
-                        <button className="btn btn-info" style={{ fontSize: "1.5rem" }} onClick={() => this.delete2(prestamo)}><FormattedMessage id="prestamos.pay" /> </button>
+                        {!prestamo.paymentId && <button className="btn btn-info" style={{ fontSize: "1.5rem" }} onClick={() => this.delete2(prestamo)}><FormattedMessage id="prestamos.pay" /> </button>}
                         <Link className="btn btn-warning" to={'/prestamos/update/' + prestamo.id} style={{ fontSize: "1.5rem" }}><FormattedMessage id="prestamos.update" /> </Link>
                       </p>
                     </div>

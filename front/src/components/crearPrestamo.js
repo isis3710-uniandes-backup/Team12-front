@@ -52,7 +52,7 @@ export class crearPrestamo extends Component {
       <div>
         <div className="container">
           <h2><FormattedMessage id="prestamos.create" /></h2>
-          <form onSubmit={() => this.crear({ objectId: this.state.objectId, userId: this.state.usuario.id, startDate: this.state.startDate, endDate: this.state.endDate, valor: items.filter((item => item.id === objectId))[0].price })}>
+          <form onSubmit={() => this.crear({ objectId: this.state.objectId, userId: this.state.usuario.id, startDate: this.state.startDate, endDate: this.state.endDate, valor: "" + items.filter((item => item.id === objectId))[0].price })}>
             <div className="form-group">
               <label htmlFor="objectId"><FormattedMessage id="prestamos.objetos" /> </label>
               {items.map((item, index) => (
