@@ -36,7 +36,7 @@ Adicionalmente de esto se puede hacer uso de los botones y links disponibles par
 - Se recomienda hacer uso de la aplicación en la pestaña de incognito o hacer logout cuando se ingrese.
 - Para una mejor visualización de la funcionalidad de la aplicación se puede acceder con el email:jorlymonsalvo@gmail.com contraseña:contraseña.
 
-
+<b>Video</b><hr>
 En el siguiente link se encuentra una demostración de las funcionalidades de la aplicación:
 https://www.youtube.com/watch?reload=9&v=apyMetTVUGg&feature=youtu.be
 
