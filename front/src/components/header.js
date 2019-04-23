@@ -63,10 +63,8 @@ export default class Header extends Component {
 
     handleLogout(event) {
         event.preventDefault();
-        if (this.api.loggedIn()) {
-            this.api.logout()
-            this.setState(this.state)
-        }
+        this.api.logout();
+        this.setState(this.state);
     }
 
     render() {
@@ -93,9 +91,11 @@ export default class Header extends Component {
                                     <li><NavLink to="/updateUser" style={{ display: this.api.loggedIn() ? 'block' : 'none' }}>
                                         <FormattedMessage id="profEditBar" />
                                     </NavLink></li>
-                                    <li><a style={{ display: this.api.loggedIn() ? 'block' : 'none' }} onClick={this.handleLogout}>
-                                        <FormattedMessage id="lout" />
-                                    </a></li>
+                                    <li onClick={this.handleLogout} style={{ display: this.api.loggedIn() ? 'block' : 'none' }}>
+                                        <NavLink to="/">
+                                            <FormattedMessage id="lout" />
+                                        </NavLink>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
