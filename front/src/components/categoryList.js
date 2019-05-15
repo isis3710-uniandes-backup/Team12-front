@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { NavLink } from "react-router-dom";
 import { FormattedMessage } from 'react-intl';
+import Pie from './Pie';
+import ReactDOM from 'react-dom';
 
 var route = (navigator.language.startsWith("es"))?'http://localhost:3001/categories':'http://localhost:3001/categories-en';
 
@@ -9,22 +11,68 @@ export default class CategoryList extends Component{
     constructor(props){
         super(props);
         this.state={
-            categories:[]
+            categories:[],
+            items: []
         }
+    }
+    componentDidUpdate(){
+        this.renderpiecharts()
     }
     componentWillMount(){
         fetch(route).then(
             response => response.json()
         ).then(
+            
             data => {
                 this.setState({
                     categories : data
                 });
+                fetch('http://localhost:3001/objetos').then(
+                    response => response.json()
+                ).then(
+                    data => {
+                        this.setState((prevState)=>({
+                            categories:prevState.categories,
+                            items : data
+                        }));
+                    }
+                ).catch(error => {
+                    console.log(error);
+                });
+                
             }
         ).catch(error => {
             console.log(error);
-        })
+        });
     }
+
+
+    renderpiecharts(){
+        let data = [];
+        for (const cat in this.state.categories) {
+            let numact = 0;
+            for (const item of this.state.items) {
+                if(item['category_id']===this.state.categories[cat]["id"]){
+                    numact++;
+                }
+            }
+            data.push(numact);
+        }
+        console.log(data)
+        //Dibujar
+        let width = ReactDOM.findDOMNode(this.refs['Canvas']).getBoundingClientRect()['width'];
+        let height = ReactDOM.findDOMNode(this.refs['Canvas']).getBoundingClientRect()['height'];
+        let minViewportSize = Math.min(width, height);
+        let radius = (minViewportSize * .6) / 2;
+        
+        let x =  width/2 ;
+        let y = radius*1.1;
+        let comp = 
+            <Pie x={x} y={y} innerRadius={radius * .35} outerRadius={radius} cornerRadius={7} padAngle={.02} data={data}/>;
+        let canvas = ReactDOM.findDOMNode(this.refs['Canvas']);
+        ReactDOM.render(comp,canvas)
+    }
+
 
     renderCategory(cat, index) {
             var arr = cat.subcategories;
@@ -56,12 +104,22 @@ export default class CategoryList extends Component{
             </ul>
         );
     }
+    renderSVG(){
+        let width = window.innerWidth;
+
+        return (
+        <svg ref="Canvas" width="inherit" height={width*0.7}/>
+        );
+    }
+    
     render(){
         return (
             <div className = "container" style={{paddingBottom:"2em", paddingTop:"2em"}}>
                 <h1><FormattedMessage id="catHeader"/></h1>
                 <hr/>
                 {this.renderCategories()}
+                <h2 style={{textAlign:"center"}}><FormattedMessage id="d3head"/></h2>
+                {this.renderSVG()}
             </div>
         );
     }

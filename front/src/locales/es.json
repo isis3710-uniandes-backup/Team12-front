@@ -86,5 +86,6 @@
     "ofertas.prevp": "Precio Anterior",
     "ofertas": "Ofertas",
     "oferta": "Oferta",
-    "ofertas.create": "Crear una Oferta!"
+    "ofertas.create": "Crear una Oferta!",
+    "d3head":"Distribución de los objetos en categorías"
 }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 //import { Carousel } from 'react-responsive-carousel';
 import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
+
+
 
 var route = (navigator.language.startsWith("es"))?'http://localhost:3001/objetos':'http://localhost:3001/objetos-en';
 
@@ -34,7 +35,7 @@ export default class Home extends Component {
             }
         ).catch(error => {
             console.log(error);
-        })
+        });
     }
 
     renderObjects(){
@@ -72,6 +73,9 @@ export default class Home extends Component {
         }
     }
 
+    
+    
+
     render() {
       return (
         <div className = "container" >
@@ -79,7 +83,6 @@ export default class Home extends Component {
               <FormattedMessage id="homeScreenHead"/>
             </h1>
             <hr/>
-            
             <h1>
               <FormattedMessage id="allObjListing"/>
             </h1>
