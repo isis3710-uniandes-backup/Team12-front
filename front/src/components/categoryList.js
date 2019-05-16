@@ -48,6 +48,7 @@ export default class CategoryList extends Component{
 
 
     renderpiecharts(){
+        let canvas = ReactDOM.findDOMNode(this.refs['Canvas']);
         let data = [];
         for (const cat in this.state.categories) {
             let numact = 0;
@@ -58,18 +59,16 @@ export default class CategoryList extends Component{
             }
             data.push(numact);
         }
-        console.log(data)
         //Dibujar
-        let width = ReactDOM.findDOMNode(this.refs['Canvas']).getBoundingClientRect()['width'];
-        let height = ReactDOM.findDOMNode(this.refs['Canvas']).getBoundingClientRect()['height'];
+        let width = canvas.getBoundingClientRect()['width'];
+        let height = canvas.getBoundingClientRect()['height'];
         let minViewportSize = Math.min(width, height);
         let radius = (minViewportSize * .6) / 2;
         
-        let x =  width/2 ;
+        let x =  width/3 ;
         let y = radius*1.1;
         let comp = 
-            <Pie x={x} y={y} innerRadius={radius * .35} outerRadius={radius} cornerRadius={7} padAngle={.02} data={data}/>;
-        let canvas = ReactDOM.findDOMNode(this.refs['Canvas']);
+            <Pie x={x} y={y} innerRadius={radius * .35} outerRadius={radius} cornerRadius={7} padAngle={.02} data={data} categories={this.state.categories}/>;
         ReactDOM.render(comp,canvas)
     }
 
@@ -116,9 +115,10 @@ export default class CategoryList extends Component{
         return (
             <div className = "container" style={{paddingBottom:"2em", paddingTop:"2em"}}>
                 <h1><FormattedMessage id="catHeader"/></h1>
-                <hr/>
                 {this.renderCategories()}
+                <hr/>
                 <h2 style={{textAlign:"center"}}><FormattedMessage id="d3head"/></h2>
+                
                 {this.renderSVG()}
             </div>
         );

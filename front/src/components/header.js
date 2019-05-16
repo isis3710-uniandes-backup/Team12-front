@@ -155,7 +155,7 @@ export default class Header extends Component {
                                 </NavLink>
                             </div>
                         </div>
-                        <div className="menu">
+                        <div className="menu" style={{ display: this.api.loggedIn() ? 'block' : 'none' }}>
                             <div className="cd-dropdown-wrapper">
                                 <NavLink className="cd-dropdown-trigger" to="/prestamos">
                                     <FormattedMessage id="prestamos" />

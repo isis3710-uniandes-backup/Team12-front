@@ -16,10 +16,12 @@ export default class Slice extends React.Component {
   
     onMouseOver() {
       this.setState({isHovered: true});
+      this.props.onMouseOverCallback(this.props.cat);
     }
   
     onMouseOut() {
       this.setState({isHovered: false});
+      this.props.onMouseOutCallback();
     }
   
     render() {
@@ -33,16 +35,17 @@ export default class Slice extends React.Component {
         .cornerRadius(cornerRadius)
         .padAngle(padAngle);
       return (
-        <g onMouseOver={this.onMouseOver}
-           onMouseOut={this.onMouseOut}
-           {...props}>
-          <path d={arc(value)} fill={fill} />
-          <text transform={translate(...arc.centroid(value))}
-                dy=".35em"
-                className="label">
-            {label}
-          </text>
-        </g>
+          <g onMouseOver={this.onMouseOver}
+            onMouseOut={this.onMouseOut}
+            {...props}>
+            <path d={arc(value)} fill={fill} />
+            <text transform={translate(...arc.centroid(value))}
+                  dy=".35em"
+                  className="label">
+              {label}
+            </text>
+          </g>
+        
       );
     }
   }

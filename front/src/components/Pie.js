@@ -6,22 +6,35 @@ export default class Pie extends React.Component {
       super(props);
       this.colorScale = d3.schemeCategory10;
       this.renderSlice = this.renderSlice.bind(this);
+      this.state = {
+        hoveredSlice:null
+      }
     }
 
   
     render() {
-      let {x, y, data} = this.props;
+      let {x, y, data, categories} = this.props;
       let pie = d3.pie();
       return (
-        <g transform={`translate(${x}, ${y})`}>
-          {pie(data).map(this.renderSlice)}
+        <g>
+          <g transform={`translate(${x}, ${y})`}>
+            {pie(data).map(this.renderSlice)}
+          </g>
+          <g transform={`translate(${x + this.props.innerRadius + this.props.outerRadius}, ${y})`}>
+            
+            <text width={`${this.props.innerRadius}px`} height={`${this.props.innerRadius}px`} fill="darkRed">
+              <tspan>
+                {this.state.hoveredSlice===null? "": categories[this.state.hoveredSlice]['name'].toString()}
+              </tspan>
+            </text>
+          </g>
         </g>
+        
       );
     }
   
     renderSlice(value, i) {
       let {innerRadius, outerRadius, cornerRadius, padAngle} = this.props;
-      console.log(value)
       return (
         <Slice key={i}
                innerRadius={innerRadius}
@@ -30,7 +43,10 @@ export default class Pie extends React.Component {
                padAngle={padAngle}
                value={value}
                label={value.data}
-               fill={this.colorScale[i]} />
+               fill={this.colorScale[i]} 
+               cat={i}
+               onMouseOverCallback={datum => this.setState({hoveredSlice: datum})}
+               onMouseOutCallback={ datum=>this.setState({hoveredSlice: null})}/>
       );
     }
   }
