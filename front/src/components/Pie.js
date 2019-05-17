@@ -20,6 +20,10 @@ export default class Pie extends React.Component {
           <g transform={`translate(${x}, ${y})`}>
             {pie(data).map(this.renderSlice)}
           </g>
+          <g transform={`translate(${x + + this.props.innerRadius + this.props.outerRadius }, ${y - this.props.outerRadius*2/3})`}>
+            <text>Total: {data.length}</text>
+          </g>
+          
           <g transform={`translate(${x + this.props.innerRadius + this.props.outerRadius}, ${y})`}>
             
             <text width={`${this.props.innerRadius}px`} height={`${this.props.innerRadius}px`} fill="darkRed">
@@ -27,6 +31,14 @@ export default class Pie extends React.Component {
                 {this.state.hoveredSlice===null? "": categories[this.state.hoveredSlice]['name'].toString()}
               </tspan>
             </text>
+          </g>
+          <g transform={`translate(${x + this.props.innerRadius + this.props.outerRadius}, ${y + this.props.outerRadius/4})`}>
+            <text>
+              <tspan>
+                {this.state.hoveredSlice===null? "": `${categories[this.state.hoveredSlice]['subcategories'].length} subcategorias`}
+              </tspan>              
+            </text>
+
           </g>
         </g>
         

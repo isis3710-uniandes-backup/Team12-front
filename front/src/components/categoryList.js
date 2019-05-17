@@ -98,7 +98,7 @@ export default class CategoryList extends Component{
 
     renderCategories() {
         return (
-            <ul style={{columns:2}}>
+            <ul  style={{columns:2, listStyleType:"none"}}>
                 {this.state.categories.map((cat, index) => this.renderCategory(cat, index))}
             </ul>
         );
@@ -114,11 +114,12 @@ export default class CategoryList extends Component{
     render(){
         return (
             <div className = "container" style={{paddingBottom:"2em", paddingTop:"2em"}}>
-                <h1><FormattedMessage id="catHeader"/></h1>
+                <h1 style={{textDecoration:"underline"}}><FormattedMessage id="catHeader"/></h1>
                 {this.renderCategories()}
                 <hr/>
                 <h2 style={{textAlign:"center"}}><FormattedMessage id="d3head"/></h2>
-                
+                <br/>
+                <p style={{textAlign:"center", color:"black"}}><FormattedMessage id="d3guide"/></p>
                 {this.renderSVG()}
             </div>
         );

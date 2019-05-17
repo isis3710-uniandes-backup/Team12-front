@@ -54,7 +54,7 @@ export class oferta extends Component {
       return (
 
         <div>
-          <h1>{this.state.usuario.name + ":"} <FormattedMessage id="ofertas" /></h1>
+          <h1 style={{textAlign:"center"}}>{this.state.usuario.name + ":"} <FormattedMessage id="ofertas" /></h1>
           <div className="container">
             <div className="row">
               {ofertas.map((oferta, index) => (
@@ -96,7 +96,7 @@ export class oferta extends Component {
             )
             }
           />
-          <Link to='/ofertas/create' style={{ fontSize: "1.8rem" }}><FormattedMessage id="ofertas.create" /></Link>
+          <p style={{textAlign:"center"}}><Link to='/ofertas/create' style={{ fontSize: "1.8rem" }}><FormattedMessage id="ofertas.create" /></Link></p>
         </div>
       )
     }

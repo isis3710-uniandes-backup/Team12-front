@@ -12,7 +12,9 @@ export default class Login extends Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            errornoe:false,
+            errorwr:false
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,7 +34,9 @@ export default class Login extends Component {
         this.api.login(this.state.email, this.state.password)
             .then(res => {
                 if (!res) {
-                    return (navigator.language.startsWith("es"))? alert("Las credenciales ingresadas no existen"):alert("Sorry those credentials don't exist!");
+                    this.setState({
+                        errornoe:true
+                    });
                 }
                 localStorage.setItem("user", JSON.stringify(res.data));
                 this.props.history.push("/");
@@ -40,9 +44,9 @@ export default class Login extends Component {
             })
             .catch(error => {
                 console.log(error);
-                (navigator.language.startsWith("es"))?alert('El correo o la contraseña son incorrectos'):alert('Email or password were incorrect');
                 this.setState({
-                    password: ''
+                    password: '',
+                    errorwr:true
                 });
             });
     }
@@ -71,6 +75,8 @@ export default class Login extends Component {
                                 {placeholder => 
                                  <input type="submit"  value={placeholder} aria-label="Left Align"/>}
                             </FormattedMessage>
+                            <p style={{color:"red"}}>{this.state.errornoe? ((navigator.language.startsWith("es"))? "Las credenciales ingresadas no existen":"Sorry those credentials don't exist!"):""}</p>
+                            <p style={{color:"red"}}>{this.state.errorwr? ((navigator.language.startsWith("es"))?'El correo o la contraseña son incorrectos':'Email or password were incorrect'):""}</p>
                             <div className="forgot-grid">
                                 <div className="forgot">
                                     <a href="#">

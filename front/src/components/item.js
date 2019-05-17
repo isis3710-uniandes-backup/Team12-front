@@ -42,7 +42,7 @@ export default class Item extends Component {
         }
         else {
             return (
-                <span className='non-availability'>
+                <span className='non-availablility'>
                     <FormattedMessage id="noAvailableTag" />
                 </span>
             )
@@ -51,9 +51,7 @@ export default class Item extends Component {
     handleClick() {
         (navigator.language.startsWith("es")) ? alert("Gracias por pedir este item") : alert("Thank you for buying this item")
     }
-    handleClick2() {
-        (navigator.language.startsWith("es")) ? alert("Gracias por pedir este item") : alert("Thank you for buying this item")
-    }
+    
     render() {
         return (
             <div className="container">
@@ -78,9 +76,7 @@ export default class Item extends Component {
                     <button type="button" className="btn btn-primary" style={{ marginLeft: "10px", fontSize: "12" }} onClick={this.handleClick}>
                         {this.state.item.available ? <FormattedMessage id="orderAv" /> : <FormattedMessage id="orderUnAv" />}
                     </button>
-                    <button type="button" className="btn btn-primary" style={{ marginLeft: "10px", fontSize: "12" }} onClick={this.handleClick2}>
-                        <FormattedMessage id="sellerProf" />
-                    </button>
+                    
                 </div>
             </div>
         );

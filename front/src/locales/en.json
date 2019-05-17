@@ -87,5 +87,6 @@
     "ofertas": "Offers",
     "oferta": "Offer",
     "ofertas.create": "Create an Offer!",
-    "d3head":"Item distribution in categories"
+    "d3head":"Item distribution in categories",
+    "d3guide":"Move the pointer over each slice to know which category they belong to"
 }

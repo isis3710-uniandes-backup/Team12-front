@@ -71,7 +71,7 @@ export class prestamo extends Component {
     return (
 
       <div>
-        <h1>{this.state.usuario.name + ":"} <FormattedMessage id="prestamos" /></h1>
+        <h1 style={{textAlign:"center"}}>{this.state.usuario.name + ":"} <FormattedMessage id="prestamos" /></h1>
         <div className="container">
           <div className="row">
             {prestamos.map((prestamo, index) => (
@@ -115,7 +115,7 @@ export class prestamo extends Component {
           )
           }
         />
-        <Link to='/prestamos/create' style={{ fontSize: "1.8rem" }}><FormattedMessage id="prestamos.create" /></Link>
+        <p style={{textAlign:"center"}}><Link to='/prestamos/create' style={{ fontSize: "1.8rem", textAlign:"center" }}><FormattedMessage id="prestamos.create" style={{ fontSize: "1.8rem", textAlign:"center" }}/></Link></p>
       </div>
     )
   }

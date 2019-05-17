@@ -21,7 +21,8 @@ export default class SignUp extends Component {
             city_id: '',
             email: '',
             password: '',
-            cities: []
+            cities: [],
+            error:false
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -60,16 +61,16 @@ export default class SignUp extends Component {
         })
             .then(res => {
                 if (!res) {
-                    return alert("Sorry, unable to create user");
+                    this.setState({error:true})
                 }
                 localStorage.setItem("user", JSON.stringify(res.data));
                 this.props.history.push("/");
                 window.location.reload();
             })
             .catch(error => {
-                alert(error);
                 this.setState({
-                    password: ''
+                    password: '',
+                    error:true
                 });
             });
     }
@@ -142,6 +143,7 @@ export default class SignUp extends Component {
                         {placeholder => 
                             <input type="submit" value={placeholder}/>}
                     </FormattedMessage>
+                    <p style={{color:"red"}}>{this.state.error? ((navigator.language.startsWith("es"))?'Los datos no son válidos, asegúrate de elegir una ciudad y de que los datos son correctos':'Invalid data, make sure you picked a city and your data are correct'):""}</p>
                     <div className="forgot-grid">
                       <div className="forgot">
                         <a href="#">

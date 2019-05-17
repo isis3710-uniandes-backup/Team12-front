@@ -22,7 +22,7 @@
     display: block;
     float: right;
     font-size: 1.4em;
-    text-decoration: underline red
+    text-decoration: line-through red
 }
 .login-body input{
     color:#676767 

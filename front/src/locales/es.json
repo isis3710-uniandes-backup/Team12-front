@@ -87,5 +87,6 @@
     "ofertas": "Ofertas",
     "oferta": "Oferta",
     "ofertas.create": "Crear una Oferta!",
-    "d3head":"Distribución de los objetos en categorías"
+    "d3head":"Distribución de los objetos en categorías",
+    "d3guide":"Pasa el cursor sobre cada sección para ver la categoría"
 }
