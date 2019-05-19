@@ -14,7 +14,20 @@ export default class Category extends Component{
     }
     
     componentDidMount(){
-        fetch(`http://localhost:3001/objetos/category/${this.props.match.params.categoryID}`).then(
+      if("lista" in window.localStorage){
+        let cats = JSON.parse(window.localStorage.getItem("lista"))
+        for (const act of cats) {
+          if(act["id"]===this.props.match.params.categoryID){
+            this.setState({
+              items:act["objects"]
+            })
+            break;
+          }
+        }
+      }
+      else{
+        if(navigator.onLine){
+          fetch(`http://localhost:3001/objetos/category/${this.props.match.params.categoryID}`).then(
               response => response.json()
           ).then(
               data => {
@@ -25,6 +38,9 @@ export default class Category extends Component{
           ).catch(error => {
               console.log(error);
           })
+        }
+      }
+        
           console.log(this.props)
       }
 
@@ -32,7 +48,7 @@ export default class Category extends Component{
         //Map de los objetos en list, cada uno es una fila
         return(this.state.items.map((item,index)=>{
             return(
-              <tr>
+              <tr key = {index}>
                 <td>{item.name}</td>
                 <td>{item.price}</td>
                 <td>{(item.rating)?item.rating:<FormattedMessage id="noRateTag"/>}</td>
@@ -92,7 +108,16 @@ export default class Category extends Component{
                     </th>
                   </tr>
                 </thead>
-                <tbody>{this.renderItemList()}</tbody>
+                <tbody>
+                {this.state.items.length===0?
+                  <tr>
+                    <td colSpan="7">
+                      {(navigator.onLine || "lista" in window.localStorage?<FormattedMessage id = "empty"/>:<FormattedMessage id = "no-conn"/>)}
+                    </td>
+                  </tr>
+                  :this.renderItemList()}
+                
+                </tbody>
                 
               </table>
               <NavLink to = "/categories">

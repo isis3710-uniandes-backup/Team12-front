@@ -6,29 +6,43 @@ import { FormattedMessage } from 'react-intl';
 
 export default class Item extends Component {
     api = new ApiHelper();
-
+    route = (navigator.language.startsWith("es")) ? 'http://localhost:3001/objetos/' + this.props.match.params.itemID : 'http://localhost:3001/objetos-en/' + this.props.match.params.itemID
     constructor(props) {
         super(props);
         this.state = {
-            item: {},
-            route: (navigator.language.startsWith("es")) ? 'http://localhost:3001/objetos/' + this.props.match.params.itemID : 'http://localhost:3001/objetos-en/' + this.props.match.params.itemID
-
+            item: {}
         }
     }
 
     componentWillMount() {
-
-        fetch(this.state.route).then(
-            response => response.json()
-        ).then(
-            data => {
-                this.setState({
-                    item: data
+        if("lista" in window.localStorage){
+            let cats = JSON.parse(window.localStorage.getItem("lista"))
+            for (const cat of cats){
+                for(const obj of cat['objects']){
+                    if(obj.id === this.props.match.params.itemID){
+                        this.setState({
+                            item:obj
+                        })
+                        break;
+                    }
+                }
+            }
+        }
+        else{
+            if(navigator.onLine){
+                fetch(this.state.route).then(
+                    response => response.json()
+                ).then(
+                    data => {
+                        this.setState({
+                            item: data
+                        });
+                    }
+                ).catch(error => {
+                    console.log(error);
                 });
             }
-        ).catch(error => {
-            console.log(error);
-        });
+        }
 
     }
 

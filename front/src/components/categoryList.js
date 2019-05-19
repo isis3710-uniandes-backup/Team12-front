@@ -18,32 +18,56 @@ export default class CategoryList extends Component{
     componentDidUpdate(){
         this.renderpiecharts()
     }
+    componentDidMount(){
+        this.setState(prevState=>prevState)
+    }
     componentWillMount(){
-        fetch(route).then(
-            response => response.json()
-        ).then(
+        if("lista" in window.localStorage){
+            let categorias = JSON.parse(window.localStorage.getItem("lista"))
+            let objs = [];
+            for (const cat of categorias) {
+                let act = cat['objects'];
+                for (const obj of act) {
+                    objs.push(obj);
+                }
+            }
+            this.setState({
+                categories:categorias,
+                items:objs
+            })    
+        }
+        else{
+            if(navigator.onLine){
             
-            data => {
-                this.setState({
-                    categories : data
-                });
-                fetch('http://localhost:3001/objetos').then(
+                fetch(route).then(
                     response => response.json()
                 ).then(
+                    
                     data => {
-                        this.setState((prevState)=>({
-                            categories:prevState.categories,
-                            items : data
-                        }));
+                        this.setState({
+                            categories : data
+                        });
+                        window.localStorage.setItem("lista", JSON.stringify(data))
+
+                        fetch('http://localhost:3001/objetos').then(
+                            response => response.json()
+                        ).then(
+                            data => {
+                                this.setState((prevState)=>({
+                                    categories:prevState.categories,
+                                    items : data
+                                }));
+                            }
+                        ).catch(error => {
+                            console.log(error);
+                        });
+                        
                     }
                 ).catch(error => {
                     console.log(error);
                 });
-                
             }
-        ).catch(error => {
-            console.log(error);
-        });
+        }
     }
 
 
@@ -81,7 +105,7 @@ export default class CategoryList extends Component{
                     <ul style={{listStyleType:"none"}}>
                         {cat.subcategories.map((subcat, index) => (
                             <li key = {index} style={{fontSize:"15px", paddingLeft:"2em"}}>
-                                <NavLink to= {`/categories/${cat.id}/subcategories/${subcat.id}`} style={{color:"#0170e0"}}>
+                                <NavLink to= {`/cat/${cat.id}/subcategories/${subcat.id}`} style={{color:"#0170e0"}}>
                                     {subcat.name}
                                 </NavLink>
                             </li>
@@ -98,14 +122,14 @@ export default class CategoryList extends Component{
 
     renderCategories() {
         return (
-            <ul  style={{columns:2, listStyleType:"none"}}>
+            <ul style={{columns:2, listStyleType:"none"}}>
                 {this.state.categories.map((cat, index) => this.renderCategory(cat, index))}
             </ul>
         );
     }
     renderSVG(){
         let width = window.innerWidth;
-
+        
         return (
         <svg ref="Canvas" width={width*0.7} height={width*0.7}/>
         );
@@ -120,7 +144,7 @@ export default class CategoryList extends Component{
                 <h2 style={{textAlign:"center"}}><FormattedMessage id="d3head"/></h2>
                 <br/>
                 <p style={{textAlign:"center", color:"black"}}><FormattedMessage id="d3guide"/></p>
-                {this.renderSVG()}
+                {navigator.onLine?this.renderSVG():<FormattedMessage id="no-conn"/>}
             </div>
         );
     }

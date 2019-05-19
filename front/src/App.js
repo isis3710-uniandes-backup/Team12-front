@@ -45,7 +45,7 @@ class App extends Component {
             <Route path="/ofertas" component={Oferta}/>
             <Route path="/categories/:categoryID" component={Category}/>
             <Route path="/categories" component={CategoryList}/>
-            <Route path="/subcategories/" component={Subcategory}/>
+            <Route path="/cat/:categoryID/subcategories/:subcategoryID/" component={Subcategory}/>
             <Route path="/item/:itemID" component={Item} />
             <Route path="/vender" component={Vender} />
             <Footer/>

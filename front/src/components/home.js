@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 
 var route = (navigator.language.startsWith("es"))?'http://localhost:3001/objetos':'http://localhost:3001/objetos-en';
+var longroute = (navigator.language.startsWith("es"))?'http://localhost:3001/categories':'http://localhost:3001/categories-en';
 
 export default class Home extends Component {
   /*para probar lo del carrito tenia
@@ -26,23 +27,39 @@ export default class Home extends Component {
     */
     componentDidMount(){
       if(!navigator.onLine){
-        this.setState({
-            items : window.localStorage.getItem("objetos")
-        });
+        if("lista" in window.localStorage){
+          let objs = [];
+          for (const cat of window.localStorage.getItem("lista")) {
+            objs.concat(cat['objects']);
+          }
+          this.setState({
+            items:objs
+          })
+        }
       }
       else{
-        fetch(route).then(
-              response => response.json()
+        if(!("lista" in window.localStorage)){
+          fetch(longroute).then(
+            response => response.json()
           ).then(
-              data => {
-                  this.setState({
-                      items : data
-                  });
-                  window.localStorage.setItem("objetos", JSON.stringify(data))
-              }
-          ).catch(error => {
-              console.log(error);
-          });
+            data=>{
+              window.localStorage.setItem("lista", JSON.stringify(data));
+            }
+          ).catch(error=>{
+            console.log(error);
+          })
+        }
+        fetch(route).then(
+            response => response.json()
+        ).then(
+            data => {
+                this.setState({
+                    items : data
+                });
+            }
+        ).catch(error => {
+            console.log(error);
+        });
       }
     }
 
