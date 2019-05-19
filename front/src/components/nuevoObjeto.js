@@ -68,7 +68,7 @@ export default class Vender extends Component{
             "price": this.state.price,
             "category_id": this.state.categoryID,
             "description": this.state.description,
-            "seller_id": user.id||1,
+            "seller_id": user.id,
             "available":true
         }
         this.api.createObject(obj)
