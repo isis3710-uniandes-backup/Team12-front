@@ -69,6 +69,7 @@ export default class Header extends Component {
 
     render() {
         this.state.categories = Array.from(this.state.categories);
+        var logged = this.api.loggedIn();
         return (
             <div className="header">
                 <div className="w3ls-header">
@@ -78,25 +79,39 @@ export default class Header extends Component {
                                 <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i className="fa fa-user" aria-hidden="true" />
                                     <FormattedMessage id="accountBar" />
                                 </a>
-                                <ul className="dropdown-menu">
-                                    <li><NavLink to="/login" style={{ display: this.api.loggedIn() ? 'none' : 'block' }}>
-                                        <FormattedMessage id="logBar" />
-                                    </NavLink></li>
-                                    <li><NavLink to="/signup" style={{ display: this.api.loggedIn() ? 'none' : 'block' }}>
-                                        <FormattedMessage id="supBar" />
-                                    </NavLink></li>
-                                    <li><NavLink to="/" style={{ display: this.api.loggedIn() ? 'block' : 'none' }}>
-                                        <FormattedMessage id="historyBar" />
-                                    </NavLink></li>
-                                    <li><NavLink to="/updateUser" style={{ display: this.api.loggedIn() ? 'block' : 'none' }}>
-                                        <FormattedMessage id="profEditBar" />
-                                    </NavLink></li>
-                                    <li onClick={this.handleLogout} style={{ display: this.api.loggedIn() ? 'block' : 'none' }}>
-                                        <NavLink to="/">
-                                            <FormattedMessage id="lout" />
-                                        </NavLink>
-                                    </li>
-                                </ul>
+                                {
+                                    logged ?
+                                    (<ul className="dropdown-menu">
+                                        <li>
+                                            <NavLink to="/">
+                                                <FormattedMessage id="historyBar" />
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to="/updateUser">
+                                                <FormattedMessage id="profEditBar" />
+                                            </NavLink>
+                                        </li>
+                                        <li onClick={this.handleLogout}>
+                                            <NavLink to="/">
+                                                <FormattedMessage id="lout" />
+                                            </NavLink>
+                                        </li>
+                                    </ul>)
+                                    :
+                                    (<ul className="dropdown-menu">
+                                        <li>
+                                            <NavLink to="/login">
+                                                <FormattedMessage id="logBar" />
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to="/signup">
+                                                <FormattedMessage id="supBar" />
+                                            </NavLink>
+                                        </li>
+                                    </ul>)
+                                }
                             </li>
                         </ul>
                     </div>
