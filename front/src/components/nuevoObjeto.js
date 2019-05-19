@@ -19,7 +19,6 @@ export default class Vender extends Component{
             price:'',
             categoryID:'',
             description:'',
-            userID: user.id,
             categories: [],
             subcategories:[]
         };
@@ -53,9 +52,8 @@ export default class Vender extends Component{
     handleSubmit(event) {
         event.preventDefault();
         done=true;
-        this.props.history.push("/");
-
-        /*this.api.updateUser(this.state.userID, {
+        this.api.createObject({ 
+        // TODO: Reemplazar esto por los atributos del objeto
             "name": this.state.name,
             "lastname": this.state.lastname,
             "dni": this.state.dni,
@@ -66,20 +64,18 @@ export default class Vender extends Component{
             "email": this.state.email,
             "password": this.state.password
         })
-            .then(res => {
-                if (!res) {
-                    return alert("Sorry, unable to update user");
-                }
-                alert('User updated successfully');
-                this.props.history.push("/updateUser");
-            })
-            .catch(error => {
-                console.log(error);
-                alert(error);
-                this.setState({
-                    password: ''
-                });
-            });*/
+        .then(res => {
+            // TODO: Quitar los alerts por algo más bello
+            if (!res) {
+                return alert("Sorry, unable to update user");
+            }
+            alert('Object created successfully');
+            this.props.history.push("/");
+        })
+        .catch(error => {
+            console.log(error);
+            alert(error);
+        });
     }
 
     render() {

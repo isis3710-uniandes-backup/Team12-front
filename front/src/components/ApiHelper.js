@@ -27,6 +27,16 @@ export default class ApiHelper {
         });
     };
 
+    createObject = (object) => {
+        var user = JSON.parse(localStorage.getItem('user'));
+        return this.fetch(`http://localhost:3001/users/${user.id}/objetos`, {
+            method: "POST",
+            body: JSON.stringify(object)
+        }).then(res => {
+            return Promise.resolve(res);
+        });
+    };
+
     updateUser = (userID, user) => {
         var current_user = JSON.parse(localStorage.getItem('user'));
         console.log(current_user);
