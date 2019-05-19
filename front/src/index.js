@@ -9,7 +9,7 @@ import enLocaleData from 'react-intl/locale-data/en';
 import localeEsMessages from "./locales/es";
 import localeEnMessages from "./locales/en";
 
-console.log(navigator.language)
+console.log(navigator.serviceWorker)
 
 const localeMessages = function(){
     if(navigator.language.startsWith("es")){

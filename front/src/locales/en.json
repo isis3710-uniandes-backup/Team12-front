@@ -90,5 +90,6 @@
     "d3head":"Item distribution in categories",
     "d3guide":"Move the pointer over each slice to know which category they belong to",
     "no-conn":"It seems like you are not connected, check your internet connection and reload the page",
-    "empty":"The item list is empty"
+    "empty":"The item list is empty",
+    "success":"Success"
 }
