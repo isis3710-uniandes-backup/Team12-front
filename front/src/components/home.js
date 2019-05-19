@@ -25,17 +25,25 @@ export default class Home extends Component {
 
     */
     componentDidMount(){
-      fetch(route).then(
-            response => response.json()
-        ).then(
-            data => {
-                this.setState({
-                    items : data
-                });
-            }
-        ).catch(error => {
-            console.log(error);
+      if(!navigator.onLine){
+        this.setState({
+            items : window.localStorage.getItem("objetos")
         });
+      }
+      else{
+        fetch(route).then(
+              response => response.json()
+          ).then(
+              data => {
+                  this.setState({
+                      items : data
+                  });
+                  window.localStorage.setItem("objetos", JSON.stringify(data))
+              }
+          ).catch(error => {
+              console.log(error);
+          });
+      }
     }
 
     renderObjects(){
@@ -114,7 +122,11 @@ export default class Home extends Component {
                     </th>
                   </tr>
                 </thead>
-                <tbody>{this.renderObjects()}</tbody>
+                <tbody>
+                {this.state.items.length===0?
+                    <tr><td colSpan="7"><FormattedMessage id = "no-conn"/></td></tr>:
+                    this.renderObjects()}
+                </tbody>
                 
               </table>
             </div>

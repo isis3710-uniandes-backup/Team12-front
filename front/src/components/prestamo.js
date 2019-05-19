@@ -76,7 +76,7 @@ export class prestamo extends Component {
           <div className="row">
             {prestamos.map((prestamo, index) => (
               <Fragment>
-                <div className="col-auto mb-3">
+                <div key ={index} className="col-auto mb-3">
                   <div className="card" style={{ width: "25rem", borderColor: prestamo.paymentId ? "green" : "red" }}>
                     <div className="card-body">
                       <h2 className="card-title"><FormattedMessage id="prestamo" /> {prestamo.id} </h2>

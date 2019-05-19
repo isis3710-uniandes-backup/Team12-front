@@ -88,5 +88,6 @@
     "oferta": "Oferta",
     "ofertas.create": "Crear una Oferta!",
     "d3head":"Distribución de los objetos en categorías",
-    "d3guide":"Pasa el cursor sobre cada sección para ver la categoría"
+    "d3guide":"Pasa el cursor sobre cada sección para ver la categoría",
+    "no-conn":"Parece que estás desconectado, revisa tu conexión a internet y recarga la página"
 }

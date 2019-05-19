@@ -107,7 +107,7 @@ export default class CategoryList extends Component{
         let width = window.innerWidth;
 
         return (
-        <svg ref="Canvas" width="inherit" height={width*0.7}/>
+        <svg ref="Canvas" width={width*0.7} height={width*0.7}/>
         );
     }
     
