@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Route, HashRouter } from "react-router-dom";
 import Header from './components/header'
 import Footer from './components/footer';
@@ -15,6 +15,7 @@ import Subcategory from './components/subcategory';
 import Item from './components/item';
 import CategoryList from './components/categoryList';
 import Vender from './components/nuevoObjeto';
+import ShopingCar from './components/shopingCar';
 
 class App extends Component {
   /*Para probar lo del carrito puse 
@@ -34,21 +35,33 @@ class App extends Component {
 
   render() {
     return (
-      <div role = "main">
+      <div role="main">
         <HashRouter>
-            <Header/>
-            <Route exact path="/" component={Home} />
-            <Route path="/login" component={Login}/>
-            <Route path="/signup" component={SignUp}/>
-            <Route path="/updateUser" component={updateUser}/>
-            <Route path="/prestamos" component={Prestamo}/>
-            <Route path="/ofertas" component={Oferta}/>
-            <Route path="/categories/:categoryID" component={Category}/>
-            <Route path="/categories" component={CategoryList}/>
-            <Route path="/cat/:categoryID/subcategories/:subcategoryID/" component={Subcategory}/>
-            <Route path="/item/:itemID" component={Item} />
-            <Route path="/vender" component={Vender} />
-            <Footer/>
+          <Header />
+          <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/updateUser" component={updateUser} />
+          <Route path="/prestamos" component={Prestamo} />
+          <Route path="/ofertas" component={Oferta} />
+          <Route path="/categories/:categoryID" component={Category} />
+          <Route path="/categories" component={CategoryList} />
+          <Route path="/cat/:categoryID/subcategories/:subcategoryID/" component={Subcategory} />
+          <Route path="/item/:itemID" component={Item} />
+          <Route path="/vender" component={Vender} />
+          <Route
+
+            exact path='/carrito'
+            render={props => (
+              <Fragment>
+                <ShopingCar ></ShopingCar>
+
+              </Fragment>
+
+            )
+            }
+          />
+          <Footer />
         </HashRouter>
       </div>
 

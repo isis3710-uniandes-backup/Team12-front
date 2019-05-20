@@ -25,6 +25,7 @@ export default class Home extends Component {
     <button type="submit" onClick={()=>this.addToCart(item)} aria-label="Left Align" style={{backgroundColor:"lightGreen", fontWeight:"bolder"}}>+</button>
 
     */
+   
     componentDidMount(){
       if(!navigator.onLine){
         if("lista" in window.localStorage){
@@ -63,6 +64,16 @@ export default class Home extends Component {
       }
     }
 
+    add(item) {
+    console.log("Hice algo");
+    const { carrito } = this.state;
+    this.setState({ carrito: [...carrito, item] });
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    var prueba = JSON.parse(localStorage.getItem("carrito"));
+    console.log(prueba);
+  }
+
     renderObjects(){
       return (
         this.state.items.map((item,index)=>{
@@ -74,7 +85,7 @@ export default class Home extends Component {
               <td>{(item.available)?<FormattedMessage id="availableTag"/>:<FormattedMessage id="noAvailableTag"/>}</td>
               <td>{item.description}</td>
               <td>
-                <button type="button" className="btn btn-block" aria-label="Left Align" style={{backgroundColor:"lightGreen", border:"1px solid black", padding:"7px", fontWeight:"bolder"}}>+</button>
+                <button type="button" className="btn btn-block" aria-label="Left Align" style={{backgroundColor:"lightGreen", border:"1px solid black", padding:"7px", fontWeight:"bolder"}} onClick={() => this.add(item)}>Add</button>
               </td>
               <td>
                 <NavLink to={`/item/${item.id}`}>
@@ -94,7 +105,7 @@ export default class Home extends Component {
         super(props);
         this.state = {
           items:[],
-          cart:[]
+          carrito:[]
         }
     }
 

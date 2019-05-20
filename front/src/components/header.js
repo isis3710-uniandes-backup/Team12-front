@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
+import { Link, Route } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl';
 
 //import '../App.css';
@@ -14,9 +15,9 @@ export default class Header extends Component {
     constructor(props) {
         super(props);
         this.handleLogout = this.handleLogout.bind(this);
-        
+
     }
-   
+
     handleLogout(event) {
         event.preventDefault();
         this.api.logout();
@@ -35,36 +36,36 @@ export default class Header extends Component {
                                 </a>
                                 {
                                     logged ?
-                                    (<ul className="dropdown-menu">
-                                        <li>
-                                            <NavLink to="/">
-                                                <FormattedMessage id="historyBar" />
-                                            </NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink to="/updateUser">
-                                                <FormattedMessage id="profEditBar" />
-                                            </NavLink>
-                                        </li>
-                                        <li onClick={this.handleLogout}>
-                                            <NavLink to="/">
-                                                <FormattedMessage id="lout" />
-                                            </NavLink>
-                                        </li>
-                                    </ul>)
-                                    :
-                                    (<ul className="dropdown-menu">
-                                        <li>
-                                            <NavLink to="/login">
-                                                <FormattedMessage id="logBar" />
-                                            </NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink to="/signup">
-                                                <FormattedMessage id="supBar" />
-                                            </NavLink>
-                                        </li>
-                                    </ul>)
+                                        (<ul className="dropdown-menu">
+                                            <li>
+                                                <NavLink to="/">
+                                                    <FormattedMessage id="historyBar" />
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink to="/updateUser">
+                                                    <FormattedMessage id="profEditBar" />
+                                                </NavLink>
+                                            </li>
+                                            <li onClick={this.handleLogout}>
+                                                <NavLink to="/">
+                                                    <FormattedMessage id="lout" />
+                                                </NavLink>
+                                            </li>
+                                        </ul>)
+                                        :
+                                        (<ul className="dropdown-menu">
+                                            <li>
+                                                <NavLink to="/login">
+                                                    <FormattedMessage id="logBar" />
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink to="/signup">
+                                                    <FormattedMessage id="supBar" />
+                                                </NavLink>
+                                            </li>
+                                        </ul>)
                                 }
                             </li>
                         </ul>
@@ -91,18 +92,9 @@ export default class Header extends Component {
                                 </button>
                             </form>
                         </div>
-                        <div className="header-cart">
-                            <div className="cart">
-                                <form action="javascript:myFunction(); return false;" >
-                                    <input type="hidden" name="cmd" defaultValue="_cart" />
-                                    <input type="hidden" name="display" defaultValue={1} />
-                                    <button className="w3view-cart" type="submit" style={{ backgroundColor: "#0170e0" }} name="submit" value>
-                                        <i className="fa fa-cart-arrow-down" aria-hidden="true" />
-                                        <span style={{ color: "white" }}><FormattedMessage id="cartBut" /></span>
-                                    </button>
-                                </form>
-                            </div>
-                            <div className="clearfix"> </div>
+                        <div align="right">
+                            <NavLink to="/carrito"><img src="http://pngimg.com/uploads/shopping_cart/shopping_cart_PNG17.png" width="60" height="60" />
+                            </NavLink>
                         </div>
                         <div className="clearfix"> </div>
                     </div>
