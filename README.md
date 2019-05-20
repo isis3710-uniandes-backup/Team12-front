@@ -4,6 +4,17 @@ Integrantes:<br>
   *Juan Sebastian Espitia Acero<br>
   *Jorleidis Paola Monsalvo Torres<br>
 
+<b>Video</b><hr>
+En el siguiente link se encuentra una demostración de las funcionalidades de la aplicación:
+https://www.youtube.com/watch?reload=9&v=apyMetTVUGg&feature=youtu.be
+
+
+<b>Live demo</b><hr>
+En el siguiente link se puede ingresar a la página del proyecto e interactuar con ella:
+https://telopresto-de5a4.firebaseapp.com
+
+
+
 Este repositorio contiene el codigo para la entrega 3 del curso Programacion con Tecnologias web.<br>
 
 El proyecto que se va a realizar consiste en el front de una plataforma de prestamo de objetos y servicios entre personas naturales de varias ciudades de Colombia.<br>
@@ -18,7 +29,7 @@ Se utilizaran los frameworks node.js y react.js para construir el front, que per
 -Prestamo<br>
 
 <b>Despliegue</b><hr>
-Para desplegar esta aplicacion es necesario clonar los respositorios de Team12-front y Team12-back o descargarlos y descomprimir el código. Luego de esto, se abre un terminal de comandos en la ubicacion del proyecto (o se usa el comando cd), y en el directorio raiz se ejecuta el comando npm install, y al finalizar, se ejecuta npm start. Nota: Es necesario ejecutar el back y luego el front <br>
+Para desplegar esta aplicacion es necesario clonar los respositorios de Team12-front y Team12-back o descargarlos y descomprimir el código. Luego de esto, se abre un terminal de comandos en la ubicacion del proyecto (o se usa el comando cd), y en el directorio raiz se ejecuta el comando npm install, y al finalizar, se ejecuta npm start. Nota: Es necesario ejecutar el back y luego el front, teniendo en cuenta que los comandos para el front se deben ejecutar en el directorio "front"<br>
 Para consultar los recursos se puede hacer mediante las siguientes rutas:
 - http://localhost:3000/#/ para acceder al inicio <br>
 - http://localhost:3000/#/login para hacer login en la aplicación <br>
@@ -35,10 +46,6 @@ Adicionalmente de esto se puede hacer uso de los botones y links disponibles par
 <b>Recomendaciones</b><hr>
 - Se recomienda hacer uso de la aplicación en la pestaña de incognito o hacer logout cuando se ingrese.
 - Para una mejor visualización de la funcionalidad de la aplicación se puede acceder con el email:jorlymonsalvo@gmail.com contraseña:contraseña.
-
-<b>Video</b><hr>
-En el siguiente link se encuentra una demostración de las funcionalidades de la aplicación:
-https://www.youtube.com/watch?reload=9&v=apyMetTVUGg&feature=youtu.be
 
 
 
