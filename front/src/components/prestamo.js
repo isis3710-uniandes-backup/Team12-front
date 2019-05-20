@@ -71,12 +71,12 @@ export class prestamo extends Component {
     return (
 
       <div>
-        <h1 style={{textAlign:"center"}}>{this.state.usuario.name + ":"} <FormattedMessage id="prestamos" /></h1>
+        <h1 style={{ textAlign: "center" }}>{this.state.usuario.name + ":"} <FormattedMessage id="prestamos" /></h1>
         <div className="container">
           <div className="row">
             {prestamos.map((prestamo, index) => (
               <Fragment>
-                <div key ={index} className="col-auto mb-3">
+                <div key={index} className="col-auto mb-3">
                   <div className="card" style={{ width: "25rem", borderColor: prestamo.paymentId ? "green" : "red" }}>
                     <div className="card-body">
                       <h2 className="card-title"><FormattedMessage id="prestamo" /> {prestamo.id} </h2>
@@ -115,7 +115,7 @@ export class prestamo extends Component {
           )
           }
         />
-        <p style={{textAlign:"center"}}><Link to='/prestamos/create' style={{ fontSize: "1.8rem", textAlign:"center" }}><FormattedMessage id="prestamos.create" style={{ fontSize: "1.8rem", textAlign:"center" }}/></Link></p>
+        <p style={{ textAlign: "center" }}><Link to='/prestamos/create' style={{ fontSize: "1.8rem", textAlign: "center" }}><FormattedMessage id="prestamos.create" style={{ fontSize: "1.8rem", textAlign: "center" }} /></Link></p>
       </div>
     )
   }

@@ -27,6 +27,45 @@ export default class ApiHelper {
         });
     };
 
+    createLoan = (loan) => {
+        var user = JSON.parse(localStorage.getItem('user'));
+        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos`, {
+            method: "POST",
+            body: JSON.stringify(loan) 
+        }).then(res => {
+            return Promise.resolve(res);
+        });
+    }
+
+    updateLoan = (loan) => {
+        var user = JSON.parse(localStorage.getItem('user'));
+        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos/${loan.id}`, {
+            method: "PUT",
+            body: JSON.stringify(loan)
+        }).then(res => {
+            return Promise.resolve(res);
+        });
+    };
+
+    getLoan = (loan) => {
+        var user = JSON.parse(localStorage.getItem('user'));
+        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos/${loan.id}`, {
+            method: "PUT",
+            body: JSON.stringify(loan)
+        }).then(res => {
+            return Promise.resolve(res);
+        });
+    };
+
+    getAllLoans = (loan) => {
+        var user = JSON.parse(localStorage.getItem('user'));
+        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos`, {
+            method: "PUT"
+        }).then(res => {
+            return Promise.resolve(res);
+        });
+    };
+    
     createObject = (object) => {
         var user = JSON.parse(localStorage.getItem('user'));
         return this.fetch(`http://localhost:3001/users/${user.id}/objetos`, {

@@ -64,12 +64,63 @@ export default class Home extends Component {
       }
     }
 
-    add(item) {
+    add(itemcito) {
     console.log("Hice algo");
     const { carrito } = this.state;
-    this.setState({ carrito: [...carrito, item] });
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+    var carrito2 = this.state.carrito;
+    var i ;
+    if(carrito.length===0){
+        const item = {
+                  name : itemcito.name,
+                  price : itemcito.price,
+                  rating : itemcito.rating,
+                  available : itemcito.available,
+                  description : itemcito.description,
+                  qty : 1
+        }
+        carrito2.push(item);
+        console.log(carrito2);
+        console.log("PRIMERO");
+    }
+    else{
+    for (i =0; i<carrito2.length ; i++){
+      var el = carrito2[i];
+      if(el.name === itemcito.name){
+        const item = {
+                  name : itemcito.name,
+                  price : itemcito.price,
+                  rating : itemcito.rating,
+                  available : itemcito.available,
+                  description : itemcito.description,
+                  qty : el.qty + 1
+        }
+        carrito2.splice(i,1);
+        carrito2.push(item);
+        console.log("ya habia");
+        break;
+        
+        console.log(carrito2);
+      }
+      else if(el.name !== itemcito.name && (i === carrito2.length -1)){
+        const item = {
+                  name : itemcito.name,
+                  price : itemcito.price,
+                  rating : itemcito.rating,
+                  available : itemcito.available,
+                  description : itemcito.description,
+                  qty : 1
+        }
+        carrito2.push(item);
+        console.log("no habia");
+        console.log(carrito2);
+        break;
+        
+      }
+    }
+  }
+    this.setState({carrito : carrito2});
 
+        localStorage.setItem("carrito", JSON.stringify(carrito));
     var prueba = JSON.parse(localStorage.getItem("carrito"));
     console.log(prueba);
   }
