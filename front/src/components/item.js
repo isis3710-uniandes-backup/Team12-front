@@ -63,7 +63,7 @@ export default class Item extends Component {
         }
     }
     handleClick() {
-        (navigator.language.startsWith("es")) ? alert("Gracias por pedir este item") : alert("Thank you for buying this item")
+        (navigator.language.startsWith("es")) ? alert("Para agregar este y otros productos, ve a la pantalla principal y presiona el botón +") : alert("Please go back to the home page and add any product you want with the + button")
     }
     
     render() {

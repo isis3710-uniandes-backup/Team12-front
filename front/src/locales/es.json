@@ -22,6 +22,8 @@
     "tItemRate": "Calificación",
     "tItemAv": "Disponibilidad",
     "tItemDes": "Descripción",
+    "tItemQty":"Cantidad",
+    "tItemAR":"Agregar/Quitar",
     "noRateTag": "No hay calificaciones",
     "noAvailableTag": "No disponible",
     "availableTag": "Disponible",

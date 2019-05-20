@@ -136,7 +136,7 @@ export default class Home extends Component {
               <td>{(item.available)?<FormattedMessage id="availableTag"/>:<FormattedMessage id="noAvailableTag"/>}</td>
               <td>{item.description}</td>
               <td>
-                <button type="button" className="btn btn-block" aria-label="Left Align" style={{backgroundColor:"lightGreen", border:"1px solid black", padding:"7px", fontWeight:"bolder"}} onClick={() => this.add(item)}>Add</button>
+                <button type="button" className="btn btn-block" aria-label="Left Align" style={{backgroundColor:"lightGreen", border:"1px solid black", padding:"7px", fontWeight:"bolder"}} onClick={() => this.add(item)}>+</button>
               </td>
               <td>
                 <NavLink to={`/item/${item.id}`}>

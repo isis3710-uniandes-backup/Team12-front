@@ -22,6 +22,8 @@
     "tItemRate": "Rating",
     "tItemAv": "Availability",
     "tItemDes": "Description",
+    "tItemQty":"Quantity",
+    "tItemAR":"Add/Remove",
     "cartAdd": "Add to cart",
     "noRateTag": "No ratings yet",
     "noAvailableTag": "Not available",
