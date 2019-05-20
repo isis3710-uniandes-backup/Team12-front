@@ -93,7 +93,9 @@ export default class Header extends Component {
                             </form>
                         </div>
                         <div align="right">
-                            <NavLink to="/carrito"><img src="http://pngimg.com/uploads/shopping_cart/shopping_cart_PNG17.png" width="60" height="60" />
+                            <NavLink to="/carrito">
+                                <img src="https://pngimg.com/uploads/shopping_cart/shopping_cart_PNG17.png" width="60" height="60" alt = "cart"/>
+                                <FormattedMessage id = "cartBut"/>
                             </NavLink>
                         </div>
                         <div className="clearfix"> </div>

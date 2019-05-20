@@ -26,30 +26,30 @@ export default class Home extends Component {
 
     */
    
-    componentDidMount(){
-      if(!navigator.onLine){
-        if("lista" in window.localStorage){
-          let objs = [];
-          for (const cat of window.localStorage.getItem("lista")) {
-            objs.concat(cat['objects']);
+   componentWillMount(){
+    if("lista" in window.localStorage){
+        let objs = [];
+        for (const cat of JSON.parse(window.localStorage.getItem("lista"))) {
+          let acts = cat["objects"];
+          for (const objact of acts) {
+            objs.push(objact);
           }
-          this.setState({
-            items:objs
-          })
         }
+        this.setState({
+          items:objs
+        })
       }
-      else{
-        if(!("lista" in window.localStorage)){
-          fetch(longroute).then(
-            response => response.json()
-          ).then(
-            data=>{
-              window.localStorage.setItem("lista", JSON.stringify(data));
-            }
-          ).catch(error=>{
-            console.log(error);
-          })
-        }
+    else{
+      if(navigator.onLine){
+        fetch(longroute).then(
+          response => response.json()
+        ).then(
+          data=>{
+            window.localStorage.setItem("lista", JSON.stringify(data));
+          }
+        ).catch(error=>{
+          console.log(error);
+        });
         fetch(route).then(
             response => response.json()
         ).then(
@@ -61,8 +61,10 @@ export default class Home extends Component {
         ).catch(error => {
             console.log(error);
         });
-      }
+      }       
+      
     }
+  }
 
     add(itemcito) {
     console.log("Hice algo");
@@ -99,7 +101,6 @@ export default class Home extends Component {
         console.log("ya habia");
         break;
         
-        console.log(carrito2);
       }
       else if(el.name !== itemcito.name && (i === carrito2.length -1)){
         const item = {
@@ -202,7 +203,7 @@ export default class Home extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                {this.state.items.length===0?
+                {this.state.items.length===0 && !navigator.onLine && !( "lista" in window.localStorage) ?
                     <tr><td colSpan="7"><FormattedMessage id = "no-conn"/></td></tr>:
                     this.renderObjects()}
                 </tbody>
