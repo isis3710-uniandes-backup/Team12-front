@@ -12,11 +12,26 @@ export default class shopingCar extends Component {
     }
 
     add(index, sum) {
+        console.log("entre");
+        var carrito = JSON.parse(localStorage.getItem("carrito"));
+        var carrito2 = carrito;
+        var item = carrito2[index];
         var cant = this.state.cantidad;
-        var val = parseInt(cant[index]);
-        val += parseInt(sum);
+        var add = {
+                  name : item.name,
+                  price : item.price,
+                  rating : item.rating,
+                  available : item.available,
+                  description : item.description,
+                  qty : item.qty + parseInt(sum)
+        }
+        carrito2.splice(index,1);
+        carrito2.push(add);
+        localStorage.setItem("carrito", JSON.stringify(carrito2));
+        var val = add.qty;
         cant[index] = val;
         this.setState({ cantidad: cant })
+
     }
 
     render() {
@@ -40,12 +55,12 @@ export default class shopingCar extends Component {
                         <tbody>
                             <tr>
                                 <td>{item.name}</td>
-                                <td>{this.state.cantidad[index]}</td>
+                                <td>{item.qty}</td>
                                 <td>{item.description}</td>
                                 <td>{item.rating}</td>
                                 <td>{item.price}</td>
-                                <td>{this.state.cantidad[index] * item.price}</td>
-                                <td><button className="btn btn-succes" onClick={() => this.add(index, 1)}>+</button></td>
+                                <td>{item.qty * item.price}</td>
+                                <td><button className="btn btn-succes" onClick={() => {this.add(index, 1)}}>+</button></td>
                                 <td><button className="btn btn-danger" onClick={() => this.add(index, -1)}>-</button></td>
                             </tr>
                         </tbody>
