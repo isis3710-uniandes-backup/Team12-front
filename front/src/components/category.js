@@ -29,7 +29,7 @@ export default class Category extends Component {
     }
     else {
       if (navigator.onLine) {
-        fetch(`http://localhost:3001/objetos/category/${this.props.match.params.categoryID}`).then(
+        fetch(`http://52.3.50.151:3001/objetos/category/${this.props.match.params.categoryID}`).then(
           response => response.json()
         ).then(
           data => {

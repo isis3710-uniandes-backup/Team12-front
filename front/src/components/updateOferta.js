@@ -17,7 +17,7 @@ export class crearOferta extends Component {
 }
 
 componentDidMount = () => {
-  axios.get(`http://localhost:3001/users/${this.state.usuario.id}/ofertas/${this.props.match.params.id}`)
+  axios.get(`http://52.3.50.151:3001/users/${this.state.usuario.id}/ofertas/${this.props.match.params.id}`)
   .then( res => {
       this.setState({nombre: res.data.nombre, img: res.data.img, id: res.data.id, porcentajeDescuento: res.data.porcentajeDescuento, precioAnterior: res.data.precioAnterior})
   })
@@ -27,7 +27,7 @@ componentDidMount = () => {
   
   update = (oferta)=> {
     console.log(oferta)
-      axios.put(`http://localhost:3001/users/${this.state.usuario.id}/ofertas/${this.state.id}`, oferta)
+      axios.put(`http://52.3.50.151:3001/users/${this.state.usuario.id}/ofertas/${this.state.id}`, oferta)
       .then(res =>{
           console.log(res.data)
       })

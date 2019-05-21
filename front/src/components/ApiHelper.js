@@ -4,7 +4,7 @@ export default class ApiHelper {
 
     login = (email, password) => {
         // Get a token from api server using the fetch api
-        return this.fetch(`http://localhost:3001/login`, {
+        return this.fetch(`http://52.3.50.151:3001/login`, {
             method: "POST",
             body: JSON.stringify({
                 email,
@@ -18,7 +18,7 @@ export default class ApiHelper {
 
     signup = (user) => {
         // Get a token from api server using the fetch api
-        return this.fetch(`http://localhost:3001/signup`, {
+        return this.fetch(`http://52.3.50.151:3001/signup`, {
             method: "POST",
             body: JSON.stringify(user)
         }).then(res => {
@@ -29,7 +29,7 @@ export default class ApiHelper {
 
     createLoan = (loan) => {
         var user = JSON.parse(localStorage.getItem('user'));
-        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos`, {
+        return this.fetch(`http://52.3.50.151:3001/users/${user.id}/prestamos`, {
             method: "POST",
             body: JSON.stringify(loan)
         }).then(res => {
@@ -40,7 +40,7 @@ export default class ApiHelper {
 
     deleteLoan = (id) => {
         var user = JSON.parse(localStorage.getItem('user'));
-        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos/${id}`, {
+        return this.fetch(`http://52.3.50.151:3001/users/${user.id}/prestamos/${id}`, {
             method: "DELETE"
         }).then(res => {
             console.log("APIE");
@@ -51,7 +51,7 @@ export default class ApiHelper {
 
     updateLoan = (loan) => {
         var user = JSON.parse(localStorage.getItem('user'));
-        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos/${loan.id}`, {
+        return this.fetch(`http://52.3.50.151:3001/users/${user.id}/prestamos/${loan.id}`, {
             method: "PUT",
             body: JSON.stringify(loan)
         }).then(res => {
@@ -61,7 +61,7 @@ export default class ApiHelper {
 
     getLoan = (id) => {
         var user = JSON.parse(localStorage.getItem('user'));
-        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos/${id}`, {
+        return this.fetch(`http://52.3.50.151:3001/users/${user.id}/prestamos/${id}`, {
             method: "GET"
         }).then(res => {
             return Promise.resolve(res);
@@ -70,7 +70,7 @@ export default class ApiHelper {
 
     getAllLoans = () => {
         var user = JSON.parse(localStorage.getItem('user'));
-        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos`, {
+        return this.fetch(`http://52.3.50.151:3001/users/${user.id}/prestamos`, {
             method: "GET"
         }).then(res => {
             return Promise.resolve(res);
@@ -79,7 +79,7 @@ export default class ApiHelper {
 
     createOffer = (loan) => {
         var user = JSON.parse(localStorage.getItem('user'));
-        return this.fetch(`http://localhost:3001/users/${user.id}/ofertas`, {
+        return this.fetch(`http://52.3.50.151:3001/users/${user.id}/ofertas`, {
             method: "POST",
             body: JSON.stringify(loan)
         }).then(res => {
@@ -90,7 +90,7 @@ export default class ApiHelper {
 
     deleteOffer = (id) => {
         var user = JSON.parse(localStorage.getItem('user'));
-        return this.fetch(`http://localhost:3001/users/${user.id}/ofertas/${id}`, {
+        return this.fetch(`http://52.3.50.151:3001/users/${user.id}/ofertas/${id}`, {
             method: "DELETE"
         }).then(res => {
             return Promise.resolve(res);
@@ -99,7 +99,7 @@ export default class ApiHelper {
 
     updateOffer = (loan) => {
         var user = JSON.parse(localStorage.getItem('user'));
-        return this.fetch(`http://localhost:3001/users/${user.id}/ofertas/${loan.id}`, {
+        return this.fetch(`http://52.3.50.151:3001/users/${user.id}/ofertas/${loan.id}`, {
             method: "PUT",
             body: JSON.stringify(loan)
         }).then(res => {
@@ -109,7 +109,7 @@ export default class ApiHelper {
 
     getOffer = (loan) => {
         var user = JSON.parse(localStorage.getItem('user'));
-        return this.fetch(`http://localhost:3001/users/${user.id}/ofertas/${loan.id}`, {
+        return this.fetch(`http://52.3.50.151:3001/users/${user.id}/ofertas/${loan.id}`, {
             method: "GET"
         }).then(res => {
             return Promise.resolve(res);
@@ -118,7 +118,7 @@ export default class ApiHelper {
 
     getAllOffers = () => {
         var user = JSON.parse(localStorage.getItem('user'));
-        return this.fetch(`http://localhost:3001/users/${user.id}/ofertas`, {
+        return this.fetch(`http://52.3.50.151:3001/users/${user.id}/ofertas`, {
             method: "GET"
         }).then(res => {
             return Promise.resolve(res);
@@ -127,7 +127,7 @@ export default class ApiHelper {
 
     createObject = (object) => {
         var user = JSON.parse(localStorage.getItem('user'));
-        return this.fetch(`http://localhost:3001/users/${user.id}/objetos`, {
+        return this.fetch(`http://52.3.50.151:3001/users/${user.id}/objetos`, {
             method: "POST",
             body: JSON.stringify(object)
         }).then(res => {
@@ -146,7 +146,7 @@ export default class ApiHelper {
             }
         }
         localStorage.setItem("user", JSON.stringify(current_user));
-        return this.fetch(`http://localhost:3001/users/${userID}`, {
+        return this.fetch(`http://52.3.50.151:3001/users/${userID}`, {
             method: "PUT",
             body: JSON.stringify(user)
         }).then(res => {

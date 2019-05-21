@@ -19,7 +19,7 @@ export class updatePrestamo extends Component {
 
   componentDidMount = () => {
 
-    axios.get(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/${this.props.match.params.id}`)
+    axios.get(`http://52.3.50.151:3001/users/${this.state.usuario.id}/prestamos/${this.props.match.params.id}`)
       .then(res => {
         this.setState({ startDate: res.data.startDate, endDate: res.data.endDate, id: res.data.id })
       })/*
@@ -36,7 +36,7 @@ export class updatePrestamo extends Component {
 
   update = (prestamo) => {
     console.log(prestamo)
-        axios.put(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/${this.state.id}`, prestamo)
+        axios.put(`http://52.3.50.151:3001/users/${this.state.usuario.id}/prestamos/${this.state.id}`, prestamo)
           .then(res => {
             console.log(res.data)
           });

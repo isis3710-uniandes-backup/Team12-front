@@ -20,7 +20,7 @@ export class prestamo extends Component {
 
   componentDidMount = () => {
     /*
-    fetch(`http://localhost:3001/users/${this.state.usuario.id}/prestamos`)
+    fetch(`http://52.3.50.151:3001/users/${this.state.usuario.id}/prestamos`)
       .then(response => response.json())
       .then(prestamos => {
         prestamos.forEach(prestamo => {
@@ -72,7 +72,7 @@ export class prestamo extends Component {
             alert(error);
           });
       */
-    axios.delete(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/` + id)
+    axios.delete(`http://52.3.50.151:3001/users/${this.state.usuario.id}/prestamos/` + id)
       .then(res => {
         this.setState({ prestamos: [...this.state.prestamos.filter(prestamo => prestamo.id !== id)] })
       })
@@ -109,7 +109,7 @@ export class prestamo extends Component {
             alert(error);
           });
       */
-    axios.put(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/` + prestamo.id, newprestamo)
+    axios.put(`http://52.3.50.151:3001/users/${this.state.usuario.id}/prestamos/` + prestamo.id, newprestamo)
       .then(res => {
         this.setState({ prestamos: [...prestamos.splice(prestamos.indexOf(prestamos.find(p => p.id === prestamo.id)), 1, res.data)] })
         window.location.reload()

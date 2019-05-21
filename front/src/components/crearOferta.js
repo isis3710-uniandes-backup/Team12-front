@@ -21,7 +21,7 @@ export class crearOferta extends Component {
 
   crear = (oferta) => {
     console.log(oferta)
-    axios.post(`http://localhost:3001/users/${this.state.usuario.id}/ofertas`, oferta)
+    axios.post(`http://52.3.50.151:3001/users/${this.state.usuario.id}/ofertas`, oferta)
   }
 
   render() {

@@ -5,7 +5,7 @@ import {Redirect, NavLink} from 'react-router-dom';
 import ApiHelper from './ApiHelper';
 
 var user = JSON.parse(localStorage.getItem('user'));
-var route = (navigator.language.startsWith("es"))?'http://localhost:3001/categories':'http://localhost:3001/categories-en';
+var route = (navigator.language.startsWith("es"))?'http://52.3.50.151:3001/categories':'http://52.3.50.151:3001/categories-en';
 
 export default class Vender extends Component{
     

@@ -21,7 +21,7 @@ export class oferta extends Component {
   componentDidMount = () => {
     if (this.api.loggedIn()) {
 
-      fetch(`http://localhost:3001/users/${this.state.usuario.id}/ofertas`)
+      fetch(`http://52.3.50.151:3001/users/${this.state.usuario.id}/ofertas`)
         .then(response => response.json())
         .then(ofertas => {
           ofertas.forEach(oferta => {
@@ -43,7 +43,7 @@ export class oferta extends Component {
 
   delete = (id) => {
     console.log(id)
-    axios.delete(`http://localhost:3001/users/${this.state.usuario.id}/ofertas/` + id)
+    axios.delete(`http://52.3.50.151:3001/users/${this.state.usuario.id}/ofertas/` + id)
       .then(res => {
         this.setState({ ofertas: [...this.state.ofertas.filter(oferta => oferta.id !== id)] })
       })

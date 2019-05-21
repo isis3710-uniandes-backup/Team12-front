@@ -29,7 +29,7 @@ export default class updateUser extends Component {
     }
 
     componentWillMount() {
-        fetch('http://localhost:3001/cities', {
+        fetch('http://52.3.50.151:3001/cities', {
                 method: "GET"
             })
             .then(response => response.json())

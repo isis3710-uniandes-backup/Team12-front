@@ -13,7 +13,7 @@ export class crearPrestamo extends Component {
       endDate: {},
       usuario: JSON.parse(localStorage.getItem("user")),
       prestamo: {},
-      route: (navigator.language.startsWith("es")) ? 'http://localhost:3001/objetos' : "http://localhost:3001/objetos-en/",
+      route: (navigator.language.startsWith("es")) ? 'http://52.3.50.151:3001/objetos' : "http://52.3.50.151:3001/objetos-en/",
       items: [],
 
     }
@@ -57,7 +57,7 @@ export class crearPrestamo extends Component {
             console.log(error);
             alert(error);
           });*/
-    axios.post(`http://localhost:3001/users/${this.state.usuario.id}/prestamos`, prestamo)
+    axios.post(`http://52.3.50.151:3001/users/${this.state.usuario.id}/prestamos`, prestamo)
   }
 
   render() {

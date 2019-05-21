@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 
 export default class Item extends Component {
     api = new ApiHelper();
-    route = (navigator.language.startsWith("es")) ? 'http://localhost:3001/objetos/' + this.props.match.params.itemID : 'http://localhost:3001/objetos-en/' + this.props.match.params.itemID
+    route = (navigator.language.startsWith("es")) ? 'http://52.3.50.151:3001/objetos/' + this.props.match.params.itemID : 'http://52.3.50.151:3001/objetos-en/' + this.props.match.params.itemID
     constructor(props) {
         super(props);
         this.state = {

@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import Pie from './Pie';
 import ReactDOM from 'react-dom';
 
-var route = (navigator.language.startsWith("es"))?'http://localhost:3001/categories':'http://localhost:3001/categories-en';
+var route = (navigator.language.startsWith("es"))?'http://52.3.50.151:3001/categories':'http://52.3.50.151:3001/categories-en';
 
 
 export default class CategoryList extends Component{
@@ -49,7 +49,7 @@ export default class CategoryList extends Component{
                         });
                         window.localStorage.setItem("lista", JSON.stringify(data))
 
-                        fetch('http://localhost:3001/objetos').then(
+                        fetch('http://52.3.50.151:3001/objetos').then(
                             response => response.json()
                         ).then(
                             data => {
