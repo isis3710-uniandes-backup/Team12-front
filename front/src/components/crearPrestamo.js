@@ -43,6 +43,20 @@ export class crearPrestamo extends Component {
 
   crear = (prestamo) => {
     console.log(prestamo)
+    /*
+        this.api.createLoan(prestamo)
+          .then(res => {
+            // TODO: Quitar los alerts por algo más bello
+            if (!res) {
+              return alert("Sorry, unable to update user");
+            }
+            console.log(res);
+    
+          })
+          .catch(error => {
+            console.log(error);
+            alert(error);
+          });*/
     axios.post(`http://localhost:3001/users/${this.state.usuario.id}/prestamos`, prestamo)
   }
 

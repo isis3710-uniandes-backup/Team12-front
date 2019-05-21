@@ -4,8 +4,11 @@ import CrearPrestamo from './crearPrestamo'
 import UpdatePrestamo from './updatePrestamo'
 import axios from 'axios';
 import { FormattedMessage } from 'react-intl';
+import ApiHelper from './ApiHelper';
 
 export class prestamo extends Component {
+
+  api = new ApiHelper();
 
   constructor(props) {
     super(props);
@@ -16,9 +19,7 @@ export class prestamo extends Component {
   }
 
   componentDidMount = () => {
-
-    console.log(JSON.parse(localStorage.getItem("user")));
-
+    /*
     fetch(`http://localhost:3001/users/${this.state.usuario.id}/prestamos`)
       .then(response => response.json())
       .then(prestamos => {
@@ -33,11 +34,44 @@ export class prestamo extends Component {
           }
           this.setState({ prestamos: this.state.prestamos.concat([data]) })
         })
+      })*/
+    console.log(JSON.parse(localStorage.getItem("user")));
+
+    this.api.getAllLoans()
+      .then(res => {
+        res.forEach(prestamo => {
+          let data = {
+            id: prestamo.id,
+            paymentId: prestamo.paymentId,
+            objectId: prestamo.objectId,
+            startDate: prestamo.startDate,
+            endDate: prestamo.endDate,
+            valor: prestamo.valor
+          }
+          this.setState({ prestamos: this.state.prestamos.concat([data]) })
+        })
       })
+
   }
 
   delete = (id) => {
-    console.log(id)
+    /*
+        this.api.deleteLoan(id)
+          .then(res => {
+            // TODO: Quitar los alerts por algo más bello
+            if (!res) {
+              return alert("Sorry, unable to update user");
+            }
+            console.log(res);
+            this.setState({ prestamos: [...this.state.prestamos.filter(prestamo => prestamo.id !== id)] });
+    
+          })
+          .catch(error => {
+            console.log("ERROR");
+            console.log(error);
+            alert(error);
+          });
+      */
     axios.delete(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/` + id)
       .then(res => {
         this.setState({ prestamos: [...this.state.prestamos.filter(prestamo => prestamo.id !== id)] })
@@ -58,7 +92,23 @@ export class prestamo extends Component {
     }
     console.log(newprestamo)
     const { prestamos } = this.state
-    console.log(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/` + prestamo.id)
+    /*
+        this.api.updateLoan(newprestamo)
+          .then(res => {
+            // TODO: Quitar los alerts por algo más bello
+            if (!res) {
+              return alert("Sorry, unable to update user");
+            }
+            console.log("Entre");
+            this.setState({ prestamos: [...prestamos.splice(prestamos.indexOf(prestamos.find(p => p.id === prestamo.id)), 1, res.data)] });
+            window.location.reload()
+    
+          })
+          .catch(error => {
+            console.log(error);
+            alert(error);
+          });
+      */
     axios.put(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/` + prestamo.id, newprestamo)
       .then(res => {
         this.setState({ prestamos: [...prestamos.splice(prestamos.indexOf(prestamos.find(p => p.id === prestamo.id)), 1, res.data)] })

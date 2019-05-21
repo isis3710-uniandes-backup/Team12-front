@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { FormattedMessage } from 'react-intl';
+import ApiHelper from './ApiHelper';
+export class updatePrestamo extends Component {
 
-export class crearPrestamo extends Component {
+  api = new ApiHelper();
 
   constructor(props) {
     super(props);
@@ -16,20 +18,36 @@ export class crearPrestamo extends Component {
   }
 
   componentDidMount = () => {
+
     axios.get(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/${this.props.match.params.id}`)
       .then(res => {
         this.setState({ startDate: res.data.startDate, endDate: res.data.endDate, id: res.data.id })
-      })
+      })/*
+    this.api.getLoan(this.props.match.params.id)
+      .then(res => {
+        console.log("Este es el obtener uno del update");
+        console.log(res);
+        //this.setState({ startDate: res.data.startDate, endDate: res.data.endDate, id: res.data.id });
+      });*/
+
   }
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   update = (prestamo) => {
     console.log(prestamo)
-    axios.put(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/${this.state.id}`, prestamo)
+        axios.put(`http://localhost:3001/users/${this.state.usuario.id}/prestamos/${this.state.id}`, prestamo)
+          .then(res => {
+            console.log(res.data)
+          });
+        /*
+    this.api.updateLoan(prestamo)
       .then(res => {
-        console.log(res.data)
-      })
+
+        console.log("Este es el update del update");
+        console.log(res);
+      });
+*/
   }
 
   render() {
@@ -56,4 +74,4 @@ export class crearPrestamo extends Component {
   }
 }
 
-export default crearPrestamo
+export default updatePrestamo

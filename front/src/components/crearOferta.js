@@ -30,25 +30,24 @@ export class crearOferta extends Component {
       <div>
         <div className="container">
           <h2><FormattedMessage id="ofertas.create" /></h2>
-
-          <form onSubmit={() => this.crear({ paymentId: this.state.paymentId, objectId: this.state.objectId, userId: this.state.usuario.id, startDate: this.state.startDate, endDate: this.state.endDate })}>
+          <form onSubmit={() => this.crear({ nombre: this.state.nombre, img: "https://cdn.pixabay.com/photo/2017/10/27/12/28/discounts-2894129_960_720.png", precioAnterior: this.state.precioAnterior, porcentajeDescuento: this.state.porcentajeDescuento, objetosId: this.state.objetosId })}>
             <div className="form-group">
-              <label htmlFor="paymentId"><FormattedMessage id="prestamos.pid" /> </label>
-              <input name="paymentId" value={this.state.paymentId} className="form-control" id="paymentId" placeholder="Insert the payment id" onChange={this.onChange} />
+              <label htmlFor="nombre"><FormattedMessage id="nombre" /> </label>
+              <input name="nombre" value={this.state.nombre} className="form-control" id="nombre" placeholder="Insert the offer name" onChange={this.onChange} />
             </div>
             <div className="form-group">
-              <label htmlFor="objectId"><FormattedMessage id="prestamos.oid" /> </label>
+              <label htmlFor="precioAnterior"><FormattedMessage id="precioAnterior" /> </label>
+              <input name="precioAnterior" value={this.state.precioAnterior} className="form-control" id="precioAnterior" placeholder="Insert the previous price" onChange={this.onChange} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="porcentajeDescuento"><FormattedMessage id="porcentajeDescuento" /> </label>
+              <input name="porcentajeDescuento" value={this.state.porcentajeDescuento} className="form-control" id="startDate" placeholder="Insert the discount (%)" onChange={this.onChange} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="objectId"><FormattedMessage id="Id objeto" /> </label>
               <input name="objectId" value={this.state.objectId} className="form-control" id="objectId" placeholder="Insert the object id" onChange={this.onChange} />
             </div>
-            <div className="form-group">
-              <label htmlFor="startDate"><FormattedMessage id="prestamos.sd" /> </label>
-              <input name="startDate" value={this.state.startDate} className="form-control" id="startDate" placeholder="dd/mm/aa" onChange={this.onChange} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="endDate"><FormattedMessage id="prestamos.ed" /> </label>
-              <input name="endDate" value={this.state.endDate} className="form-control" id="endDate" placeholder="dd/mm/aa" onChange={this.onChange} />
-            </div>
-            <button type="submit" className="btn btn-primary"><FormattedMessage id="prestamos.submit" /></button>
+            <button type="submit" className="btn btn-primary"><FormattedMessage id="ofertas.submit" /></button>
           </form>
         </div>
       </div>

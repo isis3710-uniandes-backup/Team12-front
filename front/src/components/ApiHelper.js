@@ -31,8 +31,20 @@ export default class ApiHelper {
         var user = JSON.parse(localStorage.getItem('user'));
         return this.fetch(`http://localhost:3001/users/${user.id}/prestamos`, {
             method: "POST",
-            body: JSON.stringify(loan) 
+            body: JSON.stringify(loan)
         }).then(res => {
+            return Promise.resolve(res);
+        });
+    }
+
+
+    deleteLoan = (id) => {
+        var user = JSON.parse(localStorage.getItem('user'));
+        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos/${id}`, {
+            method: "DELETE"
+        }).then(res => {
+            console.log("APIE");
+            console.log(res);
             return Promise.resolve(res);
         });
     }
@@ -47,9 +59,47 @@ export default class ApiHelper {
         });
     };
 
-    getLoan = (loan) => {
+    getLoan = (id) => {
         var user = JSON.parse(localStorage.getItem('user'));
-        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos/${loan.id}`, {
+        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos/${id}`, {
+            method: "GET"
+        }).then(res => {
+            return Promise.resolve(res);
+        });
+    };
+
+    getAllLoans = () => {
+        var user = JSON.parse(localStorage.getItem('user'));
+        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos`, {
+            method: "GET"
+        }).then(res => {
+            return Promise.resolve(res);
+        });
+    };
+
+    createOffer = (loan) => {
+        var user = JSON.parse(localStorage.getItem('user'));
+        return this.fetch(`http://localhost:3001/users/${user.id}/ofertas`, {
+            method: "POST",
+            body: JSON.stringify(loan)
+        }).then(res => {
+            return Promise.resolve(res);
+        });
+    }
+
+
+    deleteOffer = (id) => {
+        var user = JSON.parse(localStorage.getItem('user'));
+        return this.fetch(`http://localhost:3001/users/${user.id}/ofertas/${id}`, {
+            method: "DELETE"
+        }).then(res => {
+            return Promise.resolve(res);
+        });
+    }
+
+    updateOffer = (loan) => {
+        var user = JSON.parse(localStorage.getItem('user'));
+        return this.fetch(`http://localhost:3001/users/${user.id}/ofertas/${loan.id}`, {
             method: "PUT",
             body: JSON.stringify(loan)
         }).then(res => {
@@ -57,15 +107,24 @@ export default class ApiHelper {
         });
     };
 
-    getAllLoans = (loan) => {
+    getOffer = (loan) => {
         var user = JSON.parse(localStorage.getItem('user'));
-        return this.fetch(`http://localhost:3001/users/${user.id}/prestamos`, {
-            method: "PUT"
+        return this.fetch(`http://localhost:3001/users/${user.id}/ofertas/${loan.id}`, {
+            method: "GET"
         }).then(res => {
             return Promise.resolve(res);
         });
     };
-    
+
+    getAllOffers = () => {
+        var user = JSON.parse(localStorage.getItem('user'));
+        return this.fetch(`http://localhost:3001/users/${user.id}/ofertas`, {
+            method: "GET"
+        }).then(res => {
+            return Promise.resolve(res);
+        });
+    };
+
     createObject = (object) => {
         var user = JSON.parse(localStorage.getItem('user'));
         return this.fetch(`http://localhost:3001/users/${user.id}/objetos`, {
@@ -81,9 +140,9 @@ export default class ApiHelper {
         console.log(current_user);
         for (var key in user) {
             if (user[key] === '') {
-              delete user[key];
+                delete user[key];
             } else if (user[key] !== undefined) {
-              current_user[key] = user[key];
+                current_user[key] = user[key];
             }
         }
         localStorage.setItem("user", JSON.stringify(current_user));
@@ -149,9 +208,9 @@ export default class ApiHelper {
         }
 
         return fetch(url, {
-                headers,
-                ...options
-            })
+            headers,
+            ...options
+        })
             .then(this._checkStatus)
             .then(response => response.json());
     };
