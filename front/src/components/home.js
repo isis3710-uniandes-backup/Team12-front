@@ -5,8 +5,8 @@ import { NavLink } from 'react-router-dom';
 
 
 
-var route = (navigator.language.startsWith("es"))?'http://52.3.50.151:3001/objetos':'http://52.3.50.151:3001/objetos-en';
-var longroute = (navigator.language.startsWith("es"))?'http://52.3.50.151:3001/categories':'http://52.3.50.151:3001/categories-en';
+var route = (navigator.language.startsWith("es"))?'http://localhost:3001/objetos':'http://localhost:3001/objetos-en';
+var longroute = (navigator.language.startsWith("es"))?'http://localhost:3001/categories':'http://localhost:3001/categories-en';
 
 export default class Home extends Component {
   /*para probar lo del carrito tenia
