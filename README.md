@@ -6,7 +6,7 @@ Integrantes:<br>
 
 <b>Video</b><hr>
 En el siguiente link se encuentra una demostración de las funcionalidades de la aplicación:
-https://www.youtube.com/watch?reload=9&v=apyMetTVUGg&feature=youtu.be
+https://www.youtube.com/watch?v=EyPr-d6vnRs&feature=youtu.be
 
 
 <b>Live demo</b><hr>
