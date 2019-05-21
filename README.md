@@ -11,7 +11,7 @@ https://www.youtube.com/watch?reload=9&v=apyMetTVUGg&feature=youtu.be
 
 <b>Live demo</b><hr>
 En el siguiente link se puede ingresar a la página del proyecto e interactuar con ella:
-http://34.228.223.133:5000
+http://52.3.50.151:5000
 
 
 Este repositorio contiene el codigo para la entrega 3 del curso Programacion con Tecnologias web.<br>
